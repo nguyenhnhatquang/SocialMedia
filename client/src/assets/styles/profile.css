@@ -1,0 +1,135 @@
+.profile {
+    margin-left: 25%;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-310px);
+    width: 75%;
+}
+
+.info {
+    margin-top: 0;
+    margin-left: 10%;
+    width: 90%;
+}
+
+.info-container {
+    display: flex;
+    width: 100%;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.info-content_username {
+    font-size: 26px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.info-content_buttons {
+    display: flex;
+}
+
+.info-content_button {
+    margin-left: 10px;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 15px;
+    background: #ffffff;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.info-content_follows {
+    margin-left: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.info-content_follow {
+    margin-right: 20px;
+    color: #7d2ae8;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.info-content_follow:hover {
+    box-shadow: 0 1px #000000;
+}
+
+.info-content_name {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 16px;
+}
+.info-content_email {
+    margin-left: 10px;
+    font-style: italic;
+    font-size: 16px;
+}
+.info-content_website {
+    margin-left: 10px;
+    color: #349eff;
+    font-size: 15px;
+}
+
+.info-content_story {
+    font-size: 15px;
+    margin-left: 10px;
+    word-wrap: break-word;
+    width: 55%;
+}
+
+.profile_tab{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile_tab button{
+    outline: none;
+    border: none;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 5px 20px;
+    margin: 0 25px;
+    opacity: 0.5;
+    cursor: pointer;
+    background: rgba(236, 236, 236, 0.5);
+}
+
+.profile_tab button.active{
+    border-bottom: 4px solid #ddd;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+.follow {
+    z-index: 10;
+    position: absolute;
+    top: 50px;
+    background: #f3f3f3;
+    padding: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 320px;
+    border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.follow-close {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}

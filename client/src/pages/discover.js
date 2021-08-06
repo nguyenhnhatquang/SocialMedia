@@ -1,0 +1,58 @@
+import React, { useState, useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { getDiscoverPosts, DISCOVER_TYPES } from "../redux/actions/discoverAction";
+import PostThumb from "../components/PostThumb";
+import { getDataAPI } from '../utils/fetchData';
+import LoadMoreButton from "../components/LoadMoreButton";
+
+const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626030734/Spinner-0.4s-257px_v8vrp7.gif'
+
+const Discover = () => {
+    const { auth, discover } = useSelector(state => state);
+    const dispatch = useDispatch();
+
+    const [load, setLoad] = useState(false);
+
+    useEffect(() => {
+        if (!discover.firstLoad) {
+            dispatch(getDiscoverPosts(auth.token));
+        }
+    }, [dispatch, auth.token, discover.firstLoad]);
+
+    const handleLoadMore = async () => {
+        setLoad(true);
+        const res = await getDataAPI(`post_discover?num=${discover.page * 8}`, auth.token);
+        dispatch({ type: DISCOVER_TYPES.UPDATE_POSTS, payload: res.data });
+        setLoad(false);
+    };
+
+    return (
+        <div className="discover">
+            {discover.loading ? (
+                <img
+                    src={LoadIcon}
+                    alt="Loading..."
+                    className="d-block mx-auto my-4"
+                />
+            ) : (
+                <PostThumb posts={discover.posts} result={discover.result} />
+
+            )}
+
+            {load && (
+                <img src={LoadIcon} alt="Loading..." className="d-block mx-auto" />
+            )}
+
+            {!discover.loading && (
+                <LoadMoreButton
+                    result={discover.result}
+                    page={discover.page}
+                    load={load}
+                    handleLoadMore={handleLoadMore}
+                />
+            )}
+        </div>
+    );
+}
+
+export default Discover;

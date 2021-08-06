@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    max-width: 1400px;
+    margin: auto;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(199, 149, 255, 0.73);
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(#ca50f6, #ff74b9);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(#da03fc, #ff2098);
+}
+
+img {
+    object-fit: cover;
+}
+
+#theme {
+    display: none;
+}
+
+#theme:checked ~ .App {
+    filter: invert(1);
+}
+
+.App {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+}
+
+.main {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.discover {
+    margin-left: 25%;
+    display: flex;
+    transform: translateY(-320px);
+}
+
+.img-thumbnail {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+.loadMoreButton {
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    border-radius: 15px;
+    background: #ffffff;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    cursor: pointer;
+}
+
+@import url("./toast.css");
+@import url("./user-card.css");
+@import url("./carousel.css");
+@import url("./loading.css");
+@import url("./404.css");
+@import url("./status-modal.css");
+@import url("./change-password.css");
+@import url("./auth.css");
+@import url("./home.css");
+@import url("./header.css");
+@import url("./search.css");
+@import url("./avatar.css");
+@import url("./left-side.css");
+@import url("./right-side.css");
+@import url("./post-card.css");
+@import url("./comment.css");
+@import url("./profile.css");
+@import url("./edit-profile.css");
+@import url("./post_thumb.css");
+@import url("./message.css");
+
+@import url("./responsive.css");
+
+
+
+
+
+
+
+
+
+

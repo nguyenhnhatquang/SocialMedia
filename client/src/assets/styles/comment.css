@@ -1,0 +1,147 @@
+.comment {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.comment-container {
+    width: 100%;
+    background: #FFF;
+    border-radius: 15px;
+}
+
+.more-comment {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.inputComment {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin: auto auto 10px auto;
+    height: 40px;
+}
+
+.inputComment-main {
+    width: 100%;
+    height: 100%;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 50px;
+    outline: none;
+    background: rgb(255, 255, 254);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.04) 0px 18px 36px -18px inset;
+}
+
+.inputComment-main_input {
+    width: 100%;
+    padding-left: 2px;
+    border-radius: 50px;
+    border: none;
+    height: 100%;
+    font-size: 18px;
+    outline: none;
+    padding-right: 1%;
+    background: rgba(255, 255, 255, 0);
+}
+
+.inputComment-main_submit {
+    width: auto;
+    margin-right: 0px;
+}
+
+.commentCard {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.commentCard-avatar {
+    margin: 10px 5px 0px;
+}
+
+.commentCard-content {
+    width: 90%;
+    max-width: 450px;
+    box-shadow: rgba(50, 50, 93, 0.1) 30px 30px 60px 20px inset, rgba(0, 0, 0, 0.04) 30px 18px 36px 18px inset;
+    border-radius: 15px;
+    padding: 10px 40px 10px 15px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.commentCard-content_name {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.commentCard-menu {
+    width: 20px;
+    margin-left: 5px;
+    position: relative;
+}
+
+.commentCard-likeButton {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    right: 10px;
+    cursor: pointer;
+}
+
+.commentCard-likeCount {
+    padding: 3px;
+    box-shadow: rgba(253, 253, 253, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px inset;
+    width: 38px;
+    display: flex;
+    border-radius: 10px;
+    position: absolute;
+    right: -30px;
+    bottom: 0px;
+}
+
+.commentCard-likeCount img {
+    height: 20px;
+    width: 20px;
+}
+
+.commentCard-content_button {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.commentCard-content_button-date {
+    margin-right: 0px;
+    font-size: 13px;
+}
+
+.commentCard-content_button-item {
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.commentCard-content_textArea {
+    width: 100%;
+    border-radius: 15px;
+    padding: 7px 7px;
+    resize: none;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.commentCard-reply a {
+    text-decoration: none;
+}

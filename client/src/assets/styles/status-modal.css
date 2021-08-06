@@ -1,0 +1,100 @@
+.status-modal {
+    position: fixed;
+    background: #0008;
+    top: 0;
+    z-index: 30;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+}
+.status-modal_form{
+    max-width: 500px;
+    width: 60%;
+    background: #fff;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+.status-modal_header{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    transform: translateY(-15px);
+}
+.status-modal_header-title{
+    width: 90%;
+    margin-left: 20px;
+    display: flex;
+    font-size: 1.4rem;
+    font-weight: 630;
+    align-items: center;
+    justify-content: center;
+}
+.status-modal_body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.status-modal_body-textArea{
+    width: 100%;
+    height: 25vh;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+}
+.status-modal_body-icons{
+    margin-top: 5px;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.status-modal_body-icon{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.status-modal_body-stream{
+    position: relative;
+}
+.status-modal_body-streamClose{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+.status-modal_body-imageClose{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+}
+.status-modal_submit:disabled{
+    background-image: linear-gradient(#f1daff, #debbff);
+    cursor: not-allowed;
+}
+.status-modal_submit{
+    margin-top: 5px;
+    width: 100%;
+    height: 45px;
+    font-size: 17px;
+    border-radius: 10px;
+    background-image: linear-gradient(#e072fc, #f846f5);
+}
+.status-modal_body-images{
+    max-height: 270px;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 10px;
+}
+.status-modal_body-image{
+    position: relative;
+}
+
