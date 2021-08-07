@@ -39,17 +39,17 @@ const Search = () => {
 
     return (
         <form className="search" onSubmit={handleSearch}>
-            <img className="search-icon" src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912691/icon/search_trw2ne.svg" alt="message"/>
+            <img className="search__icon" src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912691/icon/search_trw2ne.svg" alt="message"/>
             <input
                 type="text"
-                className="search-bar"
+                className="search__bar"
                 placeholder="Nhấn enter để tìm kiếm"
                 value={search}
                 onChange={(e) =>
                     setSearch(e.target.value.toLowerCase().replace(/ /g, " "))
                 }
             />
-            <img className="search-icon--close" onClick={handleClose} src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912787/icon/error_l9krog.svg" alt="message" style={search?{visibility: "visible"}:{visibility:"hidden"}}/>
+            <img className="search--close" onClick={handleClose} src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912787/icon/error_l9krog.svg" alt="message" style={search?{visibility: "visible"}:{visibility:"hidden"}}/>
         </form>
     );
 }
