@@ -156,7 +156,7 @@ const CommentCard = ({children, comment, post, commentId}) => {
                     />
                     <label htmlFor={`card-header_${commentId}`}>
                         <img
-                            className="left-side_item"
+                            className="left-side__svg"
                             src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1627459882/icon/more_u9f94p.svg"
                             alt="more"
                         />

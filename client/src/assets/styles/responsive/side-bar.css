@@ -1,0 +1,33 @@
+@media (max-width: 950px) {
+    .left-side__avatar_info strong {
+        display: none;
+    }
+
+    .left-side_link img {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .left-side {
+        width: 15%;
+        min-width: 70px;
+        max-width: 90px;
+    }
+
+    .left-side__avatar_info span {
+        display: none;
+    }
+
+    .left-side_link span {
+        display: none
+    }
+}
+
+@media (max-width: 600px) {
+    .left-side {
+        display: none;
+    }
+}
+
+

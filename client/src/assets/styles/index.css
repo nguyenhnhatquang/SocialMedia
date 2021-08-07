@@ -88,6 +88,11 @@ a {
     color: #000000;
 }
 
+.left-side__svg {
+    height: 30px;
+    width: 30px;
+}
+
 @import url("./global.css");
 @import url("./alert.css");
 @import url("./404.css");
@@ -108,8 +113,7 @@ a {
 @import url("./post_thumb.css");
 @import url("./message.css");
 
-/*@import url("./responsive.css");*/
-@import url("./responsive/header.css");
+@import url("./responsive/responsive.css");
 
 
 

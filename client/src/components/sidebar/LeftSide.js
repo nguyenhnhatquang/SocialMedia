@@ -19,37 +19,43 @@ const LeftSide = () => {
             <ul className="left-side__items">
                 <li>
                     <Link className="left-side_link">
-                        <img className="left-side_item"
+                        <img className="left-side__svg"
                              src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972126/icon/friends_u2pjpg.svg"
                              alt="message"/>
                         <span>Bạn bè</span>
                     </Link>
                 </li>
                 <li>
-                    <img className="left-side_item"
-                         src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972440/icon/networking_dvzt4z.svg"
-                         alt="message"/>
-                    <span>Nhóm</span>
+                    <Link className="left-side_link">
+                        <img className="left-side__svg"
+                             src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972440/icon/networking_dvzt4z.svg"
+                             alt="message"/>
+                        <span>Nhóm</span>
+                    </Link>
                 </li>
                 <li>
                     <Link to={`/discover`} className="left-side_link">
-                        <img className="left-side_item"
+                        <img className="left-side__svg"
                              src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972686/icon/compass_xjczoa.svg"
                              alt="message"/>
                         <span>Khám phá</span>
                     </Link>
                 </li>
                 <li>
-                    <img className="left-side_item"
-                         src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972877/icon/video_z4in4a.svg"
-                         alt="message"/>
-                    <span>Video</span>
+                    <Link className="left-side_link">
+                        <img className="left-side__svg"
+                             src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972877/icon/video_z4in4a.svg"
+                             alt="message"/>
+                        <span>Video</span>
+                    </Link>
                 </li>
                 <li>
-                    <img className="left-side_item"
-                         src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972933/icon/statistics_dnm5ot.svg"
-                         alt="message"/>
-                    <span>Thống kê</span>
+                    <Link className="left-side_link">
+                        <img className="left-side__svg"
+                             src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972933/icon/statistics_dnm5ot.svg"
+                             alt="message"/>
+                        <span>Thống kê</span>
+                    </Link>
                 </li>
             </ul>
         </div>
