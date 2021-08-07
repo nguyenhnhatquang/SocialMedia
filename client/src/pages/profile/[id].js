@@ -7,7 +7,7 @@ import Saved from "../../components/profile/Saved";
 import Posts from "../../components/profile/Posts";
 
 
-const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626030734/Spinner-0.4s-257px_v8vrp7.gif'
+const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1628335180/Spinner-0.5s-200px_s19crb.gif'
 
 const Profile = () => {
     const { profile, auth } = useSelector(state => state);

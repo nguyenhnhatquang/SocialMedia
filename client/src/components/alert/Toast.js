@@ -1,18 +1,25 @@
 import React from 'react'
 
-const Toast = ({msg, handleShow, bgColor}) => {
+const Toast = ({msg, handleShow, type}) => {
+    const icons = {
+        success: "fas fa-check-circle",
+        info: "fas fa-info-circle",
+        warning: "fas fa-exclamation-circle",
+        error: "fas fa-exclamation-circle",
+        close: "fas fa-times",
+    };
+
     return (
-        <div className={`toast toast--${bgColor}`}>
-            <div className="toast__icon"></div>
-            <div className="toast__content">
-                <p className="toast__type">{msg.title}</p>
-                <p className="toast__message">{msg.body}</p>
+        <div className={`toast toast--${type}`} id="toast">
+            <div className="toast__icon">
+                <i className={icons[type]}/>
             </div>
-            <div className="toast__close" onClick={handleShow} onclose={setTimeout(handleShow, 3000)}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.6 15.6">
-                    <path
-                        d="M8.9 7.8l6.5-6.5c0.3-0.3 0.3-0.8 0-1.1 -0.3-0.3-0.8-0.3-1.1 0L7.8 6.8 1.3 0.2c-0.3-0.3-0.8-0.3-1.1 0 -0.3 0.3-0.3 0.8 0 1.1l6.5 6.5L0.2 14.4c-0.3 0.3-0.3 0.8 0 1.1 0.1 0.1 0.3 0.2 0.5 0.2s0.4-0.1 0.5-0.2l6.5-6.5 6.5 6.5c0.1 0.1 0.3 0.2 0.5 0.2 0.2 0 0.4-0.1 0.5-0.2 0.3-0.3 0.3-0.8 0-1.1L8.9 7.8z"/>
-                </svg>
+            <div className="toast__body">
+                <h3 className="toast__title">{msg.title}</h3>
+                <p className="toast__msg">{msg.body}</p>
+            </div>
+            <div className="toast__close" onClick={handleShow} onclose={setTimeout(handleShow, 5000)}>
+                <i className={icons["close"]}/>
             </div>
         </div>
     );

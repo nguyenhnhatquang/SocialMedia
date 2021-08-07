@@ -5,7 +5,7 @@ import LoadMoreButton from "../LoadMoreButton";
 import { getDataAPI } from "../../utils/fetchData";
 import { POST_TYPES } from "../../redux/actions/postAction";
 
-const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626030734/Spinner-0.4s-257px_v8vrp7.gif'
+const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1628335180/Spinner-0.5s-200px_s19crb.gif'
 
 const Posts = () => {
     const { homePosts, auth, theme } = useSelector((state) => state);

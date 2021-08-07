@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import io from 'socket.io-client'
 
 import PageRender from "./customRouter/PageRender";
@@ -30,13 +30,13 @@ function App() {
     const dispatch = useDispatch();
 
     // Custom moment.js Vietnamese
-    useEffect(()=>{
+    useEffect(() => {
         moment.locale('vi');
         moment.updateLocale('vi', {
             longDateFormat: {
                 LLLL: " LT dddd, Do/MM/YYYY",
             },
-            weekdays: ["Chủ nhật","Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy"]
+            weekdays: ["Chủ nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"]
         });
     });
 
@@ -59,25 +59,25 @@ function App() {
     return (
         <Router>
             <Alert/>
+            {auth.token && <SocketClient/>}
+
             <input type="checkbox" id="theme"/>
             <div className="App">
                 <div className="main">
-                    {auth.token && <SocketClient/>}
                     {status && <StatusModal/>}
                     {changePassword && <ChangePasswordModal/>}
                     {editProfile && <EditProfileModal/>}
-                    {userType === "user" && auth.token && <Header/>}
-                    {userType === "user" && auth.token && <LeftSide/>}
+
+                    {auth.token && <Header/>}
+                    {auth.token && <LeftSide/>}
 
                     <Route
                         exact
                         path="/"
-                        component={
-                            userType === "user" ? auth.token ? Home : Auth
-                                : auth.token ? AdminDashboard : Auth
-                        }
+                        component={auth.token ? Home : Auth}
                     />
-                    {userType === "user" && (
+
+                    {auth.token && (
                         <>
                             <PrivateRouter exact path="/:page" component={PageRender}/>
                             <PrivateRouter exact path="/:page/:id" component={PageRender}/>

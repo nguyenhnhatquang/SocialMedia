@@ -7,8 +7,6 @@
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    max-width: 1400px;
-    margin: auto;
 }
 
 code {
@@ -17,7 +15,7 @@ code {
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -30,10 +28,6 @@ code {
 
 ::-webkit-scrollbar-thumb:hover {
     background-image: linear-gradient(#da03fc, #ff2098);
-}
-
-img {
-    object-fit: cover;
 }
 
 #theme {
@@ -52,8 +46,11 @@ img {
 
 .main {
     width: 100%;
+    max-width: 1400px;
     min-height: 100vh;
     position: relative;
+    margin: auto;
+    background: #f0f2f5;
 }
 
 .discover {
@@ -82,10 +79,19 @@ img {
     cursor: pointer;
 }
 
-@import url("./toast.css");
+img {
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+@import url("./global.css");
+@import url("./alert.css");
 @import url("./user-card.css");
 @import url("./carousel.css");
-@import url("./loading.css");
 @import url("./404.css");
 @import url("./status-modal.css");
 @import url("./change-password.css");
@@ -103,8 +109,8 @@ img {
 @import url("./post_thumb.css");
 @import url("./message.css");
 
-@import url("./responsive.css");
-
+/*@import url("./responsive.css");*/
+@import url("./responsive/header.css");
 
 
 

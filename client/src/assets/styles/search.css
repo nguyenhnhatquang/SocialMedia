@@ -1,6 +1,6 @@
-.search-container {
+.search {
     width: min-content;
-    background: rgb(251,250,254);
+    background: rgb(251, 250, 254);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.04) 0px 18px 36px -18px inset;
     display: flex;
     align-items: center;
@@ -8,19 +8,23 @@
     padding: 7px 15px;
     border-radius: 15px;
 }
+
 .search-icon {
     width: 30px;
     height: 30px;
 }
+
 .search-icon--close {
     width: 23px;
     height: 23px;
     cursor: pointer;
 }
-.search-container i {
+
+.search i {
     width: auto;
     cursor: pointer;
 }
+
 .search-bar {
     padding: 5px 5px 5px 10px;
     font-size: 15px;
@@ -29,6 +33,7 @@
     border: none;
     background: none;
 }
+
 .search-page {
     margin-top: 80px;
     display: flex;

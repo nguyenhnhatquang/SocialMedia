@@ -38,7 +38,7 @@ const Search = () => {
     };
 
     return (
-        <form className="search-container" onSubmit={handleSearch}>
+        <form className="search" onSubmit={handleSearch}>
             <img className="search-icon" src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912691/icon/search_trw2ne.svg" alt="message"/>
             <input
                 type="text"

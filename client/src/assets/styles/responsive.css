@@ -6,10 +6,6 @@
 }
 
 @media (max-width: 890px) {
-    .search-bar {
-        min-width: 250px;
-    }
-
     .left-side_avatar-info {
         font-size: 12px;
     }

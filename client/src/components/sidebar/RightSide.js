@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {getSuggestions} from "../../redux/actions/suggestionsAction";
 import UserCard from "../UserCard";
 
-const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626030734/Spinner-0.4s-257px_v8vrp7.gif'
+const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1628335180/Spinner-0.5s-200px_s19crb.gif'
 
 const RightSideBar = () => {
     const {auth, suggestions} = useSelector(state => state)

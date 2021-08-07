@@ -1,14 +1,8 @@
 .left-side{
-    margin-left: 0;
-    top: 60px;
-    background: rgba(255, 255, 255, 0.9);
+    position: fixed;
     width: 25%;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    position: sticky;
-    left: 0;
-    z-index: 5;
-    padding: 10px;
-    height: 400px;
+    z-index: 10;
+    max-width: 350px;
 }
 
 .left-side_avatar {

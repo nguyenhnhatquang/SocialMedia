@@ -6,20 +6,23 @@ import Signup from "../components/auth/Signup"
 const Auth = () => {
     return (
         <div className="auth">
-            <input type="checkbox" id="flip" className="auth--flip"/>
-            <div className="auth--cover">
-                <div className="auth--front">
+            <input type="checkbox" className="auth__flip" id="flip"/>
+            <div className="auth__cover">
+                <div className="auth__cover_front">
                     <img
                         src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1625940936/background_x6rq9e.jpg"
-                        alt="background"/>
+                        alt="background"
+                    />
                 </div>
-                <div className="auth--back">
-                    <img className="backImg"
+                <div className="auth__cover_back">
+                    <img
                          src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1625940936/background_x6rq9e.jpg"
-                         alt="background"/>
+                         alt="background"
+                    />
                 </div>
             </div>
-            <div className="auth--content">
+
+            <div className="auth__main">
                 <div className="auth--login">
                     <Login/>
                     <span>

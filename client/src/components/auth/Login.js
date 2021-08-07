@@ -58,9 +58,9 @@ const Login = () => {
                     />
                 </div>
                 <div className="login--text"><a href="#">Quên mật khẩu</a></div>
-                <div className="auth--button">
-                    <input type="submit" value="Đăng nhập"/>
-                </div>
+                <button className="btn auth__button">
+                    Đăng nhập
+                </button>
             </div>
         </form>
     );

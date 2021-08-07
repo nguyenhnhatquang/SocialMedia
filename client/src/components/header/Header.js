@@ -19,14 +19,18 @@ const Header = () => {
 
     return (
         <div className="header">
-            <Link to="/" className="header-logo" onClick={handleRefreshHome}>
-                <img className="header-logo--img" alt="logo" src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626886904/logo_nwimwg.png" ></img>
-                <span className="header-logo--name">Social Media</span>
-            </Link>
-            <div className="header-search">
-                <Search />
+            <div className="header__left">
+                <Link to="/" className="header__logo" onClick={handleRefreshHome}>
+                    <img
+                        src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626886904/logo_nwimwg.png"
+                        alt="logo" />
+                    <span>Social Media</span>
+                </Link>
+                <div className="header__search">
+                    <Search />
+                </div>
             </div>
-            <div className="header-items">
+            <div className="header__button">
                 <Items />
             </div>
         </div>

@@ -45,7 +45,6 @@ const Signup = () => {
                         placeholder="Nhập tên của bạn"
                         name="fullName"
                         value={fullName}
-                        autoComplete="name"
                         onChange={handleChangeInput}
                         required
                         autoFocus
@@ -58,7 +57,6 @@ const Signup = () => {
                         placeholder="Nhập tên đăng nhập"
                         name="username"
                         value={username}
-                        autoComplete="username"
                         onChange={handleChangeInput}
                         required
                     />
@@ -70,10 +68,9 @@ const Signup = () => {
                         placeholder="Nhập email"
                         name="email"
                         value={email}
-                        autoComplete="email"
+                        autoComplete="username"
                         onChange={handleChangeInput}
                         required
-                        autoFocus
                     />
                 </div>
                 <div className="auth--input-box">
@@ -102,9 +99,9 @@ const Signup = () => {
                         <span>Khác</span>
                     </div>
                 </div>
-                <div className="auth--button">
-                    <input type="submit" value="Đăng ký"/>
-                </div>
+                <button className="btn auth__button">
+                    Đăng ký
+                </button>
             </div>
         </form>
     );

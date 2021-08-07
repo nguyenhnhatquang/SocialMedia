@@ -4,7 +4,7 @@ import LoadMoreButton from "../LoadMoreButton";
 import { getDataAPI } from "../../utils/fetchData";
 import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 
-const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626030734/Spinner-0.4s-257px_v8vrp7.gif'
+const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1628335180/Spinner-0.5s-200px_s19crb.gif'
 
 const Saved = ({ auth, dispatch }) => {
     const [savePosts, setSavePosts] = useState([]);
