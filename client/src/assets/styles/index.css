@@ -90,17 +90,16 @@ a {
 
 @import url("./global.css");
 @import url("./alert.css");
+@import url("./404.css");
+@import url("./auth.css");
+@import url("./header.css");
 @import url("./user-card.css");
 @import url("./carousel.css");
-@import url("./404.css");
 @import url("./status-modal.css");
 @import url("./change-password.css");
-@import url("./auth.css");
 @import url("./home.css");
-@import url("./header.css");
-@import url("./search.css");
 @import url("./avatar.css");
-@import url("./left-side.css");
+@import url("./side-bar.css");
 @import url("./right-side.css");
 @import url("./post-card.css");
 @import url("./comment.css");

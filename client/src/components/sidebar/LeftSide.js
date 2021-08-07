@@ -7,14 +7,16 @@ const LeftSide = () => {
     const {auth} = useSelector(state => state)
     return(
         <div className="left-side">
-            <Link to={`/profile/${auth.user._id}`} className="left-side_avatar">
+
+            <Link to={`/profile/${auth.user._id}`} className="left-side__avatar">
                 <Avatar src={auth.user.avatar} size="big-avatar" />
-                <div className="left-side_avatar-info">
+                <div className="left-side__avatar_info">
                     <strong>{auth.user.fullName}</strong>
                     <span>@{auth.user.username}</span>
                 </div>
             </Link>
-            <ul className="left-side_ul">
+
+            <ul className="left-side__items">
                 <li>
                     <Link className="left-side_link">
                         <img className="left-side_item"

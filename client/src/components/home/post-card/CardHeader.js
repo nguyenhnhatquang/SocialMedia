@@ -52,7 +52,7 @@ const CardHeader = ({post}) => {
                 />
                 <label htmlFor={`card-header_${post._id}`}>
                     <img
-                        className="search-icon--close"
+                        className="left-side_item"
                         src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1627459882/icon/more_u9f94p.svg"
                         alt="more"
                     />
