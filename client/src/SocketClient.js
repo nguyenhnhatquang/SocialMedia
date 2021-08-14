@@ -4,7 +4,7 @@ import { POST_TYPES } from "./redux/actions/postAction";
 import { ADMIN_TYPES } from "./redux/actions/adminAction";
 import { GLOBALTYPES } from "./redux/actions/globalTypes";
 import { NOTIFY_TYPES } from "./redux/actions/notifyAction";
-import { MESSAGE_TYPES } from "./redux/actions/messageAction";
+import { MESS_TYPES } from "./redux/actions/messageAction";
 
 import audio from "./assets/audio/pristine.mp3"
 
@@ -121,7 +121,7 @@ const SocketClient = () => {
     //!Messages
     useEffect(() => {
         socket.on("addMessageToClient", (msg) => {
-            dispatch({ type: MESSAGE_TYPES.ADD_MESSAGE, payload: msg });
+            dispatch({ type: MESS_TYPES.ADD_MESSAGE, payload: msg });
 
         });
         return () => socket.off("addMessageToClient");

@@ -17,7 +17,7 @@ const MsgDisplay = ({user, msg, type, data}) => {
     }
 
     return (
-        <>
+        <div className="msgDisplay">
             <div className={`message-msgDisplay_${type}`}>
                 <div className={`message-msgDisplay_avatar`}>
                     <Avatar src={user.avatar} size="small-avatar"/>
@@ -51,7 +51,7 @@ const MsgDisplay = ({user, msg, type, data}) => {
             <div className={`message-msgDisplay_date-${type}`}>
                 {new Date(msg.createdAt).toLocaleString()}
             </div>
-        </>
+        </div>
     );
 }
 

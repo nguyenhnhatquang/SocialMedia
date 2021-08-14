@@ -9,18 +9,12 @@
 }
 
 @media (max-width: 768px) {
-    .left-side {
-        width: 15%;
-        min-width: 70px;
-        max-width: 90px;
-    }
-
     .left-side__avatar_info span {
-        display: none;
+        font-size: 13px;
     }
 
     .left-side_link span {
-        display: none
+        font-size: 13px;
     }
 }
 

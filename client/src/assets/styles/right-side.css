@@ -14,12 +14,14 @@
     position: relative;
     margin-bottom: 20px;
 }
+
 .right-side_friends-title {
     position: absolute;
     top: -10px;
     left: 30px;
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
 }
+
 .right-side_suggestion {
     width: 100%;
     margin-top: 0;
@@ -29,9 +31,10 @@
     border-radius: 15px;
     position: relative;
 }
+
 .right-side_suggestion_title {
     position: absolute;
     top: -10px;
     left: 30px;
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
 }

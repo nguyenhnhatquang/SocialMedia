@@ -1,0 +1,23 @@
+@media (max-width: 768px) {
+    .message-left {
+        width: 20%;
+    }
+
+    .message-right {
+        width: 80%;
+    }
+
+    .user-card_avatar-message {
+        margin-right: 0;
+    }
+
+    .user-card_information-message {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .message {
+        margin-left: 0;
+    }
+}

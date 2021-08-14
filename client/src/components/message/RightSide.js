@@ -7,101 +7,86 @@ import {GLOBALTYPES} from '../../redux/actions/globalTypes';
 import {imageShow, videoShow} from '../../utils/mediaShow';
 import {imageUpload} from '../../utils/imageUpload';
 import {
-    addMessage,
-    deleteConversation,
-    getMessages,
-    loadMoreMessages,
-    MESSAGE_TYPES
+    addMessage, getMessages, loadMoreMessages, deleteConversation
 } from '../../redux/actions/messageAction';
 
 const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1628335180/Spinner-0.5s-200px_s19crb.gif'
 
 const RightSide = () => {
-    const {auth, message, theme, socket} = useSelector(state => state);
+    const {auth, message, theme, socket, peer} = useSelector(state => state)
     const dispatch = useDispatch();
 
-    const {id} = useParams();
-    const [user, setUser] = useState([]);
-    const [text, setText] = useState('');
+    const {id} = useParams()
+    const [user, setUser] = useState([])
+    const [text, setText] = useState('')
 
-    const [page, setPage] = useState(0);
-    const [data, setData] = useState([]);
+    const refDisplay = useRef()
+    const pageEnd = useRef()
 
-    const [media, setMedia] = useState([]);
-    const [loadMedia, setLoadMedia] = useState(false);
+    const [media, setMedia] = useState([])
+    const [loadMedia, setLoadMedia] = useState(false)
 
-    const refDisplay = useRef();
-    const pageEnd = useRef();
+    const [data, setData] = useState([])
+    const [result, setResult] = useState(9)
+    const [page, setPage] = useState(0)
+    const [isLoadMore, setIsLoadMore] = useState(0)
 
     const history = useHistory()
 
     useEffect(() => {
-        const newData = message.data.filter(
-            (item) => item.sender === auth.user._id || item.sender === id
-        );
-        setData(newData);
-    }, [message.data, auth.user._id, id]);
+        const newData = message.data.find(item => item._id === id)
+        if (newData) {
+            setData(newData.messages)
+            setResult(newData.result)
+            setPage(newData.page)
+        }
+    }, [message.data, id])
 
     useEffect(() => {
-        const newUser = message.users.find((user) => user._id === id);
-        if (newUser) {
-            setUser(newUser);
-        }
-    }, [message.users, id]);
+        if (id && message.users.length > 0) {
+            setTimeout(() => {
+                refDisplay.current.scrollIntoView({behavior: 'smooth', block: 'end'})
+            }, 50)
 
-    // Gởi Tin nhắn ảnh
+            const newUser = message.users.find(user => user._id === id)
+            if (newUser) setUser(newUser)
+        }
+    }, [message.users, id])
+
     const handleChangeMedia = (e) => {
-        const files = [...e.target.files];
-        let err = "";
-        let newMedia = [];
+        const files = [...e.target.files]
+        let err = ""
+        let newMedia = []
 
-        files.forEach((file) => {
-            if (!file) {
-                return (err = "File does not exist.");
-            }
+        files.forEach(file => {
+            if (!file) return err = "File không tồn tại"
+
             if (file.size > 1024 * 1024 * 5) {
-                return (err = "Image size must be less than 5 mb.");
+                return err = "Ảnh/video lớn hơn 5mb!"
             }
-            return newMedia.push(file);
-        });
-        if (err) {
-            dispatch({type: GLOBALTYPES.ALERT, payload: {error: err}});
-        }
-        setMedia([...media, ...newMedia]);
-    };
+
+            return newMedia.push(file)
+        })
+
+        if (err) dispatch({type: GLOBALTYPES.ALERT, payload: {error: err}})
+        setMedia([...media, ...newMedia])
+    }
 
     const handleDeleteMedia = (index) => {
-        const newArr = [...media];
-        newArr.splice(index, 1);
-        setMedia(newArr);
-    };
+        const newArr = [...media]
+        newArr.splice(index, 1)
+        setMedia(newArr)
+    }
 
-    useEffect(() => {
-        if (id) {
-            const getMessagesData = async () => {
-                dispatch({type: MESSAGE_TYPES.GET_MESSAGES, payload: {messages: []}});
-                setPage(1);
-                await dispatch(getMessages({auth, id}));
-                setTimeout(() => {
-                    refDisplay.current.scrollIntoView({behavior: 'smooth', block: 'end'})
-                },100)
-            };
-
-
-            getMessagesData();
-        }
-    }, [id, dispatch, auth]);
-
-    const handleSubmit = async e => {
-        e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         if (!text.trim() && media.length === 0) return;
-        setText('');
-        setMedia([]);
-
-        setLoadMedia(true);
+        setText('')
+        setMedia([])
+        setLoadMedia(true)
 
         let newArr = [];
-        if (media.length > 0) newArr = await imageUpload(media);
+        if (media.length > 0) newArr = await imageUpload(media)
 
         const msg = {
             sender: auth.user._id,
@@ -110,47 +95,48 @@ const RightSide = () => {
             media: newArr,
             createdAt: new Date().toISOString()
         }
-        setLoadMedia(false);
 
-        await dispatch(addMessage({msg, auth, socket}));
+        setLoadMedia(false)
+        await dispatch(addMessage({msg, auth, socket}))
         if (refDisplay.current) {
-            refDisplay.current.scrollIntoView({
-                behaviour: "smooth",
-                block: "end",
-            });
+            refDisplay.current.scrollIntoView({behavior: 'smooth', block: 'end'})
         }
-    };
+    }
 
-    // load more
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    setPage((p) => p + 1);
-                }
-            },
-            {
-                threshold: 0.1,
+        const getMessagesData = async () => {
+            if (message.data.every(item => item._id !== id)) {
+                await dispatch(getMessages({auth, id}))
+                setTimeout(() => {
+                    refDisplay.current.scrollIntoView({behavior: 'smooth', block: 'end'})
+                }, 50)
             }
-        );
+        }
+        getMessagesData()
+    }, [id, dispatch, auth, message.data])
 
-        observer.observe(pageEnd.current);
-    }, [setPage]);
+    // Load More
+    useEffect(() => {
+        console.log(isLoadMore);
+        const observer = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                setIsLoadMore(p => p + 1)
+            }
+        }, {
+            threshold: 0.1
+        })
+
+        observer.observe(pageEnd.current)
+    }, [setIsLoadMore])
 
     useEffect(() => {
-        if (message.resultData >= (page - 1) * 9 && page > 1) {
-            dispatch(getMessages({auth, id, page}));
+        if (isLoadMore > 1) {
+            if (result >= page * 9) {
+                dispatch(loadMoreMessages({auth, id, page: page + 1}))
+                setIsLoadMore(1)
+            }
         }
-    }, [message.resultData, page, id, auth, dispatch]);
-
-    useEffect(() => {
-        if (refDisplay.current) {
-            refDisplay.current.scrollIntoView({
-                behaviour: "smooth",
-                block: "end",
-            });
-        }
-    }, [text])
+    }, [isLoadMore])
 
     const handleDeleteConversation = () => {
         if (window.confirm('Bạn thật sự muốn xoá?')) {
@@ -171,27 +157,26 @@ const RightSide = () => {
 
             <div className="message-body">
                 <div className="message-body-chat" ref={refDisplay}>
-                    <button style={{marginTop: '-25px', opacity: 0}} ref={pageEnd}>
+                    <button style={{opacity: 0}} ref={pageEnd}>
                         Xem thêm
                     </button>
 
                     {data.map((msg, index) => (
-                        <div key={index}>
-                            {msg.sender !== auth.user._id && (
-                                <div className="message-body-chat_other">
-                                    <MsgDisplay user={user} msg={msg} type="other"/>
-                                </div>
-                            )}
-                            {msg.sender === auth.user._id && (
-                                <div className="message-body-chat_you">
-                                    <MsgDisplay user={auth.user} msg={msg} type="you" data={data}/>
-                                </div>
-                            )}
-                        </div>
+                        <>
+                            {
+                                msg.sender !== auth.user._id ?
+                                    <div className="message-body-chat other-message" key={index}>
+                                        <MsgDisplay user={user} msg={msg} type="other"/>
+                                    </div> :
+                                    <div className="message-body-chat you-message" key={index}>
+                                        <MsgDisplay user={auth.user} msg={msg} type="you" data={data}/>
+                                    </div>
+                            }
+                        </>
                     ))}
 
                     {loadMedia && (
-                        <div className="chat_row you_message">
+                        <div className="loading_message">
                             <img src={LoadIcon} alt="Loading..."/>
                         </div>
                     )}

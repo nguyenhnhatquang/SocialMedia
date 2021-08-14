@@ -1,5 +1,21 @@
+@media (max-width: 1024px) {
+    .home-right {
+        width: 35%;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-body {
+        width: 100%;
+    }
+
+    .home-right {
+        display: none;
+    }
+}
+
 @media (max-width: 600px) {
     .home {
-        margin-left: 0;
+        margin: auto;
     }
 }
