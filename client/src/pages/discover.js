@@ -32,15 +32,13 @@ const Discover = () => {
                 <img
                     src={LoadIcon}
                     alt="Loading..."
-                    className="d-block mx-auto my-4"
                 />
             ) : (
                 <PostThumb posts={discover.posts} result={discover.result} />
-
             )}
 
             {load && (
-                <img src={LoadIcon} alt="Loading..." className="d-block mx-auto" />
+                <img src={LoadIcon} alt="Loading..."/>
             )}
 
             {!discover.loading && (

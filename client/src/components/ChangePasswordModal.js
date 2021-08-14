@@ -23,7 +23,7 @@ const StatusModal = () => {
                 <div className="change-password_header">
                     <span className="change-password_header-title">Đổi mật khẩu</span>
                     <img
-                        className="search-icon--close"
+                        className="search--close"
                         src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912787/icon/error_l9krog.svg"
                         alt="close"
                         onClick={() => dispatch({type: GLOBALTYPES.CHANGE_PASSWORD, payload: false})}

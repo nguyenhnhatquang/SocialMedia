@@ -53,12 +53,6 @@ code {
     background: #f0f2f5;
 }
 
-.discover {
-    margin-left: 25%;
-    display: flex;
-    transform: translateY(-320px);
-}
-
 .img-thumbnail {
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -91,6 +85,7 @@ a {
 .left-side__svg {
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }
 
 @import url("./global.css");
@@ -112,6 +107,7 @@ a {
 @import url("./edit-profile.css");
 @import url("./post_thumb.css");
 @import url("./message.css");
+@import url("./discover.css");
 
 @import url("./responsive/responsive.css");
 

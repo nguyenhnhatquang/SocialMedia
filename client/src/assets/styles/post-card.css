@@ -1,7 +1,6 @@
 .post-page {
     margin-left: 25%;
     display: flex;
-    transform: translateY(-315px);
 }
 
 .post-card {

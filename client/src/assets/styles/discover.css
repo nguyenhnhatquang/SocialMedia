@@ -1,0 +1,8 @@
+.discover {
+    margin-left: 25%;
+    display: flex;
+}
+
+.discover__image {
+    display: block;
+}

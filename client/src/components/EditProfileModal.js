@@ -40,7 +40,7 @@ const EditProfileModal = () => {
                 <div className="edit-profile_header">
                     <span className="edit-profile_header-title">Chỉnh sửa trang cá nhân</span>
                     <img
-                        className="search-icon--close"
+                        className="search--close"
                         src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912787/icon/error_l9krog.svg"
                         alt="message"
                         onClick={() => {
@@ -111,7 +111,7 @@ const EditProfileModal = () => {
                     </div>
                 </div>
 
-                <div className="edit-profile_body-fullName">
+                <div className="edit-profile_body-gender">
                     <label className="edit-profile_body-label" htmlFor="gender">Giới tính</label>
                     <div className="edit-profile_body-radioButton">
                         <input type="radio" id="editProfileMale"
@@ -131,6 +131,7 @@ const EditProfileModal = () => {
                         <label htmlFor="editProfileOther">Khác</label>
                     </div>
                 </div>
+
                 <button className="edit-profile_submit" type="submit">
                     Cập nhật
                 </button>

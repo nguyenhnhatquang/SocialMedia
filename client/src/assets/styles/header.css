@@ -92,6 +92,7 @@
 }
 
 .header--menuitem {
+    width: max-content;
     position: absolute;
     padding: 15px;
     display: none;

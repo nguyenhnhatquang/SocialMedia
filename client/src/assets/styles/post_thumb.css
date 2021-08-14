@@ -5,8 +5,8 @@
     grid-gap: 10px;
     overflow: hidden;
     margin: 15px;
+    width: 95%;
 }
-
 
 .post_thumb_display{
     min-width: 300px;
