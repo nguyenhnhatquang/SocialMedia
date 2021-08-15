@@ -70,6 +70,19 @@ const CommentCard = ({children, comment, post, commentId}) => {
         }
     };
 
+    const MenuItem = () => {
+        return (
+            <>
+                <div className="comment-card--dropdown__item" onClick={() => setOnEdit(true)}>
+                    <span>Sửa</span>
+                </div>
+                <div className="comment-card--dropdown__item" onClick={handleRemove}>
+                    <span>Xoá</span>
+                </div>
+            </>
+        )
+    }
+
     return (
         <div className="commentCard" style={{flexDirection: "column"}}>
             <div className="commentCard">
@@ -97,7 +110,8 @@ const CommentCard = ({children, comment, post, commentId}) => {
                             ) : (
                                 <div>
                                     {comment.tag && comment.tag._id !== comment.user._id && (
-                                        <Link to={`/profile/${comment.tag._id}`} style={{marginRight: "5px", fontWeight: "500"}}>
+                                        <Link to={`/profile/${comment.tag._id}`}
+                                              style={{marginRight: "5px", fontWeight: "500"}}>
                                             @{comment.tag.username}
                                         </Link>
                                     )}
@@ -147,39 +161,35 @@ const CommentCard = ({children, comment, post, commentId}) => {
                 </div>
 
                 <div className="commentCard-menu">
-                    <input
-                        className="card-header_dropDown-input"
-                        id={`card-header_${commentId}`}
-                        type="checkbox"
-                    />
-                    <label htmlFor={`card-header_${commentId}`}>
-                        <img
-                            className="left-side__svg"
-                            src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1627459882/icon/more_u9f94p.svg"
-                            alt="more"
-                        />
-                    </label>
+                    {
+                        (post.user._id === auth.user._id || comment.user._id === auth.user._id) &&
+                        <div className="comment-card--dropdown">
+                            <input
+                                className="comment-card--dropdown__more"
+                                id={`card-header_${comment.user._id}_${auth.user._id}_${commentId}`}
+                                type="checkbox"
+                            />
+                            <label htmlFor={`card-header_${comment.user._id}_${auth.user._id}_${commentId}`}>
+                                <img
+                                    className="left-side__svg"
+                                    src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1627459882/icon/more_u9f94p.svg"
+                                    alt="more"
+                                />
+                            </label>
 
-                    <div className="card-header_dropDown-menu" style={{width:"60px"}}>
-                        {/* Người cmt có thể sửa */}
-                        {
-                            comment.user._id === auth.user._id && (
-                                <div className="card-header_dropDown-item" onClick={() => setOnEdit(true)}>
-                                    Sửa
-                                </div>
-                            )
-                        }
-
-                        {/* Chủ bài post với cmt có thể xoá */}
-                        {
-                            (post.user._id === auth.user._id ||
-                                comment.user._id === auth.user._id) && (
-                                <div className="card-header_dropDown-item" onClick={handleRemove}>
-                                    Xoá
-                                </div>
-                            )
-                        }
-                    </div>
+                            <div className="comment-card--dropdown__menu" aria-labelledby="moreLink">
+                                {
+                                    post.user._id === auth.user._id
+                                        ? comment.user._id === auth.user._id
+                                            ? MenuItem()
+                                            : <div className="comment-card--dropdown__item" onClick={handleRemove}>
+                                                <span>Xoá</span>
+                                            </div>
+                                        : comment.user._id === auth.user._id && MenuItem()
+                                }
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
 

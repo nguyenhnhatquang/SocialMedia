@@ -86,7 +86,47 @@
 .commentCard-menu {
     width: 20px;
     margin-left: 5px;
+}
+
+.comment-card--dropdown {
     position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.comment-card--dropdown .comment-card--dropdown__menu {
+    position: absolute;
+    /*display: none;*/
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    z-index: 10;
+    top: 50px;
+    right: 0;
+    min-width: 80px;
+    display: none;
+    flex-direction: column;
+}
+
+.comment-card--dropdown__more {
+    display: none;
+}
+
+.comment-card--dropdown__more:checked ~ .comment-card--dropdown__menu {
+    display: flex;
+}
+
+.comment-card--dropdown__item {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.comment-card--dropdown__item:hover {
+    background: #e5e5e5;
 }
 
 .commentCard-likeButton {

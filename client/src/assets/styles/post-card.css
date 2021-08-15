@@ -70,7 +70,7 @@
     width: 105px;
     display: none;
     position: absolute;
-    top: 25px;
+    top: 30px;
     right: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -83,13 +83,15 @@
 }
 
 .card-header_dropDown-item {
+    width: 100%;
+    text-align: center;
     padding: 5px;
     cursor: pointer;
     border-radius: 5px;
 }
 
 .card-header_dropDown-item:hover {
-    background-image: linear-gradient(#d264fa, #e63afc);
+    background: #e5e5e5;
 }
 
 .card-body {
