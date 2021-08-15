@@ -18,6 +18,10 @@
     .search__bar {
         min-width: 250px;
     }
+
+    .search .users {
+        width: 350px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -35,6 +39,9 @@
 
     .search__bar {
         min-width: 200px;
+    }
+    .search .users {
+        width: 300px;
     }
 }
 
@@ -85,6 +92,10 @@
     .header--item.people {
         display: flex;
     }
+
+    .search .users {
+        width: 350px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -94,5 +105,9 @@
 
     .search__bar {
         min-width: 150px;
+    }
+
+    .search .users {
+        width: 270px;
     }
 }

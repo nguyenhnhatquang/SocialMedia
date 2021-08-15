@@ -31,7 +31,7 @@ export const createPost = ({content, images, auth, socket}) => async dispatch =>
         // todo notification
         const msg = {
             id: res.data.newPost._id,
-            text: "Đã thêm một bài viết mới",
+            text: "đã thêm một bài viết mới",
             recipients: res.data.newPost.user.followers,
             url: `/post/${res.data.newPost._id}`,
             content,
@@ -109,7 +109,7 @@ export const likePost = ({post, auth, socket}) => async (dispatch) => {
         // todo notification
         const msg = {
             id: auth.user._id,
-            text: "Thích bài viết của bạn",
+            text: "thích bài viết của bạn",
             recipients: [post.user._id],
             url: `/post/${post._id}`,
             content: post.content,
@@ -141,7 +141,7 @@ export const unLikePost = ({post, auth, socket}) => async (dispatch) => {
         // todo notification
         const msg = {
             id: auth.user._id,
-            text: "Thích bài viết của bạn",
+            text: "thích bài viết của bạn",
             recipients: [post.user._id],
             url: `/post/${post._id}`,
         };
@@ -184,7 +184,7 @@ export const deletePost = ({post, auth, socket}) => async (dispatch) => {
         // todo notification
         const msg = {
             id: post._id,
-            text: "Đã thêm một bài viết mới",
+            text: "đã thêm một bài viết mới",
             recipients: res.data.newPost.user.followers,
             url: `/post/${post._id}`,
         };
@@ -206,7 +206,7 @@ export const reportPost = ({post, auth}) => async (dispatch) => {
     if (reportExist && reportExist.length > 0) {
         return dispatch({
             type: GLOBALTYPES.ALERT,
-            payload: {error: "Bạn đã báo cáo bài viết này"},
+            payload: {error: "bạn đã báo cáo bài viết này"},
         });
     }
     const newPost = {...post};

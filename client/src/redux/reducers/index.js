@@ -17,6 +17,7 @@ import notify from "./notifyReducer";
 import message from "./messageReducer";
 import changePassword from "./changePasswordReducer"
 import editProfile from "./editProfileReducer"
+import search from "./searchReducer"
 
 export default combineReducers({
   auth,
@@ -36,4 +37,5 @@ export default combineReducers({
   message,
   changePassword,
   editProfile,
+  search,
 });

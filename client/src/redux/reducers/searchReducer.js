@@ -1,8 +1,8 @@
 import { GLOBALTYPES } from "../actions/globalTypes";
 
-const changePasswordReducer = (state = false, action) => {
+const searchReducer = (state = [], action) => {
     switch (action.type) {
-        case GLOBALTYPES.CHANGE_PASSWORD:
+        case GLOBALTYPES.SEARCH:
             return action.payload;
 
         default:
@@ -10,4 +10,4 @@ const changePasswordReducer = (state = false, action) => {
     }
 };
 
-export default changePasswordReducer;
+export default searchReducer;

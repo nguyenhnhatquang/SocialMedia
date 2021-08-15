@@ -7,7 +7,6 @@ const initialState = {
   sound: false,
 }
 
-
 const authReducer = (state = initialState , action) => {
   switch (action.type) {
     case NOTIFY_TYPES.GET_NOTIFIES:

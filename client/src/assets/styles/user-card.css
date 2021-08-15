@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .user-card_avatar {
@@ -35,4 +36,8 @@
 .user-card_information-username {
     font-size: 13px;
     margin-left: 0;
+}
+
+.user-card:hover {
+    background: #f1f0f0;
 }

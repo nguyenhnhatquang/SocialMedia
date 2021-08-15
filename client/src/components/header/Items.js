@@ -5,9 +5,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../redux/actions/authAction";
 import {GLOBALTYPES} from "../../redux/actions/globalTypes";
 import IconHeader from "./IconHeader";
+import NotifyModal from "../NotifyModal";
 
 const Items = () => {
     const [check, setCheck] = useState(false);
+    const [checkNotify, setCheckNotify] = useState(false);
     const {auth, notify} = useSelector((state) => state);
     const dispatch = useDispatch();
 
@@ -31,8 +33,12 @@ const Items = () => {
                 </Link>
             </div>
 
-            <div className="header__items_item">
+            <input type="checkbox" className="header--check__notify" checked={checkNotify}/>
+            <div className="header__items_item header--dropdown" onClick={() => setCheckNotify(!checkNotify)}>
                 <IconHeader type="notification" notify={notify}/>
+                <div className="header--menuitem__notify">
+                    <NotifyModal />
+                </div>
             </div>
 
             <input type="checkbox" className="header--check" checked={check}/>

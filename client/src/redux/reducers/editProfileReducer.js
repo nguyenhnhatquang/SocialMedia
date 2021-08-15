@@ -1,6 +1,5 @@
 import { GLOBALTYPES } from "../actions/globalTypes";
 
-
 const editProfileReducer = (state = false, action) => {
     switch (action.type) {
         case GLOBALTYPES.EDIT_PROFILE:

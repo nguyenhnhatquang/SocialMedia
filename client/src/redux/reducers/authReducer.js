@@ -1,6 +1,5 @@
 import { GLOBALTYPES } from '../actions/globalTypes';
 
-
 const initialState = {
 };
 
