@@ -26,7 +26,7 @@ const Posts = () => {
             ))}
 
             {load && (
-                <img src={LoadIcon} alt="Loading..." style={{marginTop: "20px"}} />
+                <img src={LoadIcon} alt="Loading..." className="loading__profile" />
             )}
 
             <LoadMoreButton

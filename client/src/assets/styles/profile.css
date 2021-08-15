@@ -135,3 +135,9 @@
     font-size: 30px;
     cursor: pointer;
 }
+
+.loading__profile {
+    width: 200px;
+    height: 200px;
+    margin-left: 40%;
+}

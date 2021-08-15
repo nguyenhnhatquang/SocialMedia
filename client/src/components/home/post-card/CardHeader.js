@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import Avatar from "../../Avatar";
 import {Link, useHistory} from "react-router-dom";
 

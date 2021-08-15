@@ -13,7 +13,7 @@ import {
 const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1628335180/Spinner-0.5s-200px_s19crb.gif'
 
 const RightSide = () => {
-    const {auth, message, theme, socket, peer} = useSelector(state => state)
+    const {auth, message, theme, socket} = useSelector(state => state)
     const dispatch = useDispatch();
 
     const {id} = useParams()

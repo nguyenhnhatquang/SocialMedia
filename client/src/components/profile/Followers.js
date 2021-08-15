@@ -2,7 +2,6 @@ import React from "react";
 import UserCard from "../UserCard";
 import {useSelector} from "react-redux";
 import FollowButton from "../FollowButton";
-import {GLOBALTYPES} from "../../redux/actions/globalTypes";
 
 const Followers = ({users, setShowFollowers}) => {
     const {auth} = useSelector((state) => state);

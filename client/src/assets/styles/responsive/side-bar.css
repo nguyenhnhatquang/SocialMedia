@@ -22,6 +22,10 @@
     .left-side {
         display: none;
     }
+
+    .post-page {
+        margin-left: 0;
+    }
 }
 
 

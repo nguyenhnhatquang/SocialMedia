@@ -24,7 +24,7 @@ const Post = () => {
         <div className="post-page">
             {
                 post.length === 0 &&
-                <img src={LoadIcon} alt="Loading..." className="d-block mx-auto my-4" />
+                <img src={LoadIcon} alt="Loading..." className="loading__profile" />
             }
 
             {

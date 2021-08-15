@@ -6,7 +6,6 @@ import Info from "../../components/profile/Info";
 import Saved from "../../components/profile/Saved";
 import Posts from "../../components/profile/Posts";
 
-
 const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1628335180/Spinner-0.5s-200px_s19crb.gif'
 
 const Profile = () => {
@@ -45,7 +44,7 @@ const Profile = () => {
             )}
 
             {profile.loading ? (
-                <img className="d-block mx-auto my-4" src={LoadIcon} alt="Loading" />
+                <img className="loading__profile" src={LoadIcon} alt="Loading" />
             ) : (
                 <>
                     {

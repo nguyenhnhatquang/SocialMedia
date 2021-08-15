@@ -37,7 +37,7 @@ const Posts = ({ auth, profile, dispatch, id }) => {
             <PostThumb posts={posts} result={result} />
 
             {load && (
-                <img src={LoadIcon} alt="Loading..."/>
+                <img src={LoadIcon} alt="Loading..." className="loading__profile"/>
             )}
 
             <LoadMoreButton

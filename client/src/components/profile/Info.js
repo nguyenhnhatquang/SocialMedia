@@ -7,7 +7,6 @@ import FollowButton from "../FollowButton";
 
 const Info = ({id, auth, profile, dispatch}) => {
     const [userData, setUserData] = useState([]);
-    const [onEdit, setOnEdit] = useState(false);
 
     const [showFollowers, setShowFollowers] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
@@ -22,12 +21,12 @@ const Info = ({id, auth, profile, dispatch}) => {
     }, [id, auth, dispatch, profile.users]);
 
     useEffect(() => {
-        if (showFollowers || showFollowing || onEdit) {
+        if (showFollowers || showFollowing ) {
             dispatch({type: GLOBALTYPES.MODAL, payload: true});
         } else {
             dispatch({type: GLOBALTYPES.MODAL, payload: false});
         }
-    }, [showFollowers, showFollowing, onEdit, dispatch]);
+    }, [showFollowers, showFollowing, dispatch]);
 
     return (
         <div className="info">

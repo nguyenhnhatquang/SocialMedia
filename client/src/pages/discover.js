@@ -32,6 +32,7 @@ const Discover = () => {
                 <img
                     src={LoadIcon}
                     alt="Loading..."
+                    className="loading__profile"
                 />
             ) : (
                 <PostThumb posts={discover.posts} result={discover.result} />

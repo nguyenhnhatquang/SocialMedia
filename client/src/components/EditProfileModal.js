@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {GLOBALTYPES} from "../redux/actions/globalTypes";
 
-import {checkImage} from "../utils/imageUpload";
 import {updateProfileUser} from "../redux/actions/profileAction";
 
 
@@ -16,7 +15,7 @@ const EditProfileModal = () => {
         gender: "",
     };
     const [userData, setUserData] = useState(initialState);
-    const {fullName, website, story, gender} = userData;
+    const {fullName, website, story} = userData;
     const {auth} = useSelector((state) => state);
     const dispatch = useDispatch();
 
