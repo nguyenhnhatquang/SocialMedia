@@ -86,7 +86,7 @@ const CommentCard = ({children, comment, post, commentId}) => {
                             {comment.user.fullName}
                         </Link>
 
-                        <div className="">
+                        <div>
                             {onEdit ? (
                                 <textarea
                                     className="commentCard-content_textArea"
@@ -97,13 +97,11 @@ const CommentCard = ({children, comment, post, commentId}) => {
                             ) : (
                                 <div>
                                     {comment.tag && comment.tag._id !== comment.user._id && (
-                                        <Link to={`/profile/${comment.tag._id}`} className="">
+                                        <Link to={`/profile/${comment.tag._id}`} style={{marginRight: "5px", fontWeight: "500"}}>
                                             @{comment.tag.username}
                                         </Link>
                                     )}
-                                    <span className="">
-                                        {content}
-                                    </span>
+                                    <span>{content}</span>
                                 </div>
                             )}
                         </div>

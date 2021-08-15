@@ -11,32 +11,34 @@ const CommentDisplay = ({comment, post, replyCm}) => {
 
     return (
         <CommentCard comment={comment} post={post} commentId={comment._id}>
-            {showRep.map(
-                (item, index) =>
-                    item.reply && (
-                        <CommentCard
-                            key={index}
-                            comment={item}
-                            post={post}
-                            commentId={comment._id}
-                        />
-                    )
-            )}
+            <div style={{paddingLeft: "16px"}}>
+                {showRep.map(
+                    (item, index) =>
+                        item.reply && (
+                            <CommentCard
+                                key={index}
+                                comment={item}
+                                post={post}
+                                commentId={comment._id}
+                            />
+                        )
+                )}
 
-            {replyCm.length - next > 0 ? (
-                <div
-                    className="more-comment"
-                    onClick={() => setNext(next + 10)}
-                >
-                    Xem thêm
-                </div>
-            ) : (
-                replyCm.length > 1 && (
-                    <div className="more-comment" onClick={() => setNext(1)}>
-                        Ẩn bớt
+                {replyCm.length - next > 0 ? (
+                    <div
+                        className="more-comment"
+                        onClick={() => setNext(next + 10)}
+                    >
+                        Xem thêm
                     </div>
-                )
-            )}
+                ) : (
+                    replyCm.length > 1 && (
+                        <div className="more-comment" onClick={() => setNext(1)}>
+                            Ẩn bớt
+                        </div>
+                    )
+                )}
+            </div>
         </CommentCard>
     );
 }
