@@ -56,12 +56,12 @@ const Items = () => {
                         </Link>
                     </li>
 
-                    <li className="header--item people"
-                        onClick={() => dispatch({type: GLOBALTYPES.CHANGE_PASSWORD, payload: true})}>
-                        <IconHeader type="people"/>
-                        <span style={{marginLeft: "10px"}}>Bạn bè</span>
+                    <li className="header--item people">
+                        <Link to="/friends" className="header__logout" >
+                            <IconHeader type="people"/>
+                            <span style={{marginLeft: "10px"}}>Bạn bè</span>
+                        </Link>
                     </li>
-
                     <li className="header--item"
                         onClick={() => dispatch({type: GLOBALTYPES.CHANGE_PASSWORD, payload: true})}>
                         <IconHeader type="key"/>

@@ -117,7 +117,7 @@ const StatusModal = () => {
                 <div className="status-modal_header">
                     <span className="status-modal_header-title">Tạo bài viết</span>
                     <img
-                        className="search-icon--close"
+                        className="search--close"
                         src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912787/icon/error_l9krog.svg"
                         alt="message"
                         onClick={() => {
@@ -168,7 +168,7 @@ const StatusModal = () => {
                                     onClick={() => deleteImages(index)}
                                 >
                                   <img
-                                      className="search-icon--close"
+                                      className="search--close"
                                       src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912787/icon/error_l9krog.svg"
                                       alt="close"
                                   />
@@ -190,7 +190,7 @@ const StatusModal = () => {
 
                             <span className="status-modal_body-streamClose" onClick={handleStopStream}>
                                  <img
-                                     className="search-icon--close"
+                                     className="search--close"
                                      src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912787/icon/error_l9krog.svg"
                                      alt="close"
                                  />

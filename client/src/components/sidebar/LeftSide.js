@@ -18,7 +18,7 @@ const LeftSide = () => {
 
             <ul className="left-side__items">
                 <li>
-                    <Link className="left-side_link">
+                    <Link to={`/friends`} className="left-side_link">
                         <img className="left-side__svg"
                              src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972126/icon/friends_u2pjpg.svg"
                              alt="message"/>

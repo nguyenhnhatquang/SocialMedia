@@ -1,0 +1,33 @@
+.friends {
+    margin-left: 25%;
+    margin-top: 10px;
+}
+
+.friends-component {
+    max-height: calc(100vh - 300px);
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.friends-title {
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.friends-users {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.friends-nothing {
+    margin: auto;
+    font-size: 16px;
+    font-weight: 600;
+}
