@@ -1,13 +1,10 @@
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import React from 'react';
 import UserCard from "../components/UserCard";
+import {useSelector} from "react-redux";
 
-const LoadIcon = 'https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1628335180/Spinner-0.5s-200px_s19crb.gif'
 
 const Friends = () => {
     const {auth} = useSelector(state => state);
-    const dispatch = useDispatch();
-    const [load, setLoad] = useState(false);
 
     return (
         <div className="friends">
