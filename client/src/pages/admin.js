@@ -1,12 +1,12 @@
 import React from 'react';
+import SideBar from "../components/admin/SideBar";
 
-const AdminDashboard = () => {
-
+const AdminPage = () => {
     return (
-        <div>
-            Admin Page
+        <div className="admin">
+            <SideBar />
         </div>
     );
 }
 
-export default AdminDashboard;
+export default AdminPage;

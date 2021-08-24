@@ -1,0 +1,97 @@
+.admin {
+    display: flex;
+    height: calc(100vh - 50px);
+    width: 100%;
+    border: solid 1px #000000;
+}
+
+.admin--left {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    background: #353A40;
+    color: #a8a8a8;
+    font-weight: 600;
+}
+
+.admin--name {
+    height: 55px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    border-bottom: solid 1px #FFFFFF;
+    margin: 0 auto 10px;
+    cursor: default;
+}
+
+.admin--control {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin--link {
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.admin--link span {
+    margin-left: 40px;
+}
+
+.admin--link:active {
+    background: rgb(0, 140, 255);
+}
+
+.admin__active {
+    background: #EBEDEC;
+    color: #000000;
+}
+
+.admin--right {
+    flex: 1;
+    padding: 20px;
+}
+
+.admin--cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 50px 0px;
+}
+
+.admin--card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 80px;
+    padding: 25px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    cursor: default;
+}
+
+.admin--card i {
+    border-right: solid 1px #a2a2a2;
+    padding-right: 10px;
+    width: 50px;
+}
+
+.admin--card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.admin--card-content p {
+    font-size: 20px;
+    font-weight: bold;
+}

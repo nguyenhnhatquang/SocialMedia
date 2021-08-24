@@ -12,7 +12,6 @@ import Alert from "./components/alert/Alert";
 import {refreshToken} from "./redux/actions/authAction";
 import {GLOBALTYPES} from "./redux/actions/globalTypes";
 import SocketClient from "./SocketClient";
-import AdminDashboard from "./pages/admin";
 import Header from "./components/header/Header";
 import StatusModal from "./components/StatusModal";
 import {getPosts} from "./redux/actions/postAction";
@@ -23,6 +22,7 @@ import 'moment/locale/vi';
 import LeftSide from "./components/sidebar/LeftSide";
 import ChangePasswordModal from "./components/ChangePasswordModal";
 import EditProfileModal from "./components/EditProfileModal";
+import AdminPage from "./pages/admin";
 
 function App() {
     const {auth, status, modal, userType, changePassword, editProfile} = useSelector((state) => state);
@@ -68,16 +68,20 @@ function App() {
                     {changePassword && <ChangePasswordModal/>}
                     {editProfile && <EditProfileModal/>}
 
-                    {auth.token && <Header/>}
-                    {auth.token && <LeftSide/>}
+                    {auth.token && userType === "user" && <Header/>}
+                    {auth.token && userType === "user" && <LeftSide/>}
 
                     <Route
                         exact
                         path="/"
-                        component={auth.token ? Home : Auth}
+                        component={auth.token ?
+                            userType === "admin" ?
+                                AdminPage
+                                : Home
+                            : Auth}
                     />
 
-                    {auth.token && (
+                    {auth.token && userType === "user" && (
                         <>
                             <PrivateRouter exact path="/:page" component={PageRender}/>
                             <PrivateRouter exact path="/:page/:id" component={PageRender}/>

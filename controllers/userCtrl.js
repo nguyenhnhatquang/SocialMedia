@@ -12,6 +12,10 @@ const userCtrl = {
         return res.status(400).json({ msg: "Không có tài khoản này" });
       }
 
+      if (user.role === "admin") {
+        return res.status(400).json({ msg: "Bạn không có quyền xem tài khoản này" });
+      }
+
       res.json({ user });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -20,12 +24,13 @@ const userCtrl = {
 
   searchUser: async (req, res) => {
     try {
-      const users = await Users.find({
+      let users = await Users.find({
         username: { $regex: req.query.username },
       })
         .limit(10)
-        .select("fullName username avatar");
+        .select("fullName username avatar role");
 
+      users = users.filter(user => user.role !== "admin");
       res.json({ users });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -126,7 +131,7 @@ const userCtrl = {
       const newArr = [...req.user.following, req.user._id];
 
       const num = req.query.num || 10;
-      const users = await Users.aggregate([
+      let users = await Users.aggregate([
         { $match: { _id: { $nin: newArr } } },
         { $sample: { size: Number(num) } },
         {
@@ -147,6 +152,7 @@ const userCtrl = {
         },
       ]).project("-password");
 
+      users = users.filter(user => user.role !== "admin");
       return res.json({
         users,
         result: users.length,
