@@ -9,6 +9,8 @@ import {
     getTotalSpamPosts,
     getTotalUsers
 } from "../../redux/actions/adminAction";
+import User from "./User";
+import Spam from "./Spam";
 
 const LeftSide = () => {
     const {auth, socket} = useSelector(state => state);
@@ -60,6 +62,8 @@ const LeftSide = () => {
             </div>
 
             {adminMenu === 1 && <Main/>}
+            {adminMenu === 2 && <User/>}
+            {adminMenu === 3 && <Spam/>}
         </>
     );
 }

@@ -54,6 +54,7 @@ const postCtrl = {
                 }),
                 req.query
             ).paginating();
+
             const posts = await features.query
                 .sort("-createdAt")
                 .populate("user likes", "avatar username fullName followers")

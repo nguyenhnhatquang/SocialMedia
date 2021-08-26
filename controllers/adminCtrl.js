@@ -2,6 +2,21 @@ const Posts = require("../models/postModel");
 const Users = require("../models/userModel");
 const Comments = require("../models/commentModel");
 
+class APIfeatures {
+    constructor(query, queryString) {
+        this.query = query;
+        this.queryString = queryString;
+    }
+
+    paginating() {
+        const page = this.queryString.page * 1 || 1;
+        const limit = this.queryString.limit * 1 || 9;
+        const skip = (page - 1) * limit;
+        this.query = this.query.skip(skip).limit(limit);
+        return this;
+    }
+}
+
 const adminCtrl = {
     getTotalUsers: async (req, res) => {
         try {
@@ -59,10 +74,11 @@ const adminCtrl = {
 
     getSpamPosts: async (req, res) => {
         try {
-            const posts = await Posts.find()
+            const spamPosts = await Posts.find({
+                $nor: [{reports: {$size: 0}}]
+            })
                 .select("user createdAt reports content")
                 .populate({path: "user", select: "username avatar email"});
-            const spamPosts = posts.filter((post) => post.reports.length > 1);
 
             res.json({spamPosts});
         } catch (err) {
@@ -79,6 +95,36 @@ const adminCtrl = {
             await Comments.deleteMany({_id: {$in: post.comments}});
 
             res.json({msg: "Xoá bài đăng thành công"});
+        } catch (err) {
+            return res.status(500).json({msg: err.message});
+        }
+    },
+
+    getUsers: async (req, res) => {
+        try {
+            const features = new APIfeatures(
+                Posts.find({
+                    user: [...req.user.following, req.user._id],
+                }),
+                req.query
+            ).paginating();
+
+            const posts = await features.query
+                .populate("user likes", "avatar username fullName followers")
+                .populate({
+                    path: "comments",
+                    populate: {
+                        path: "user likes ",
+                        select: "-password",
+                    },
+                });
+
+            res.json({
+                msg: "Thành công",
+                result: posts.length,
+                posts,
+            });
+
         } catch (err) {
             return res.status(500).json({msg: err.message});
         }
