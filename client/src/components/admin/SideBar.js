@@ -9,8 +9,8 @@ import {
     getTotalSpamPosts,
     getTotalUsers
 } from "../../redux/actions/adminAction";
-import User from "./User";
 import Spam from "./Spam";
+import {logout} from "../../redux/actions/authAction";
 
 const LeftSide = () => {
     const {auth, socket} = useSelector(state => state);
@@ -59,10 +59,16 @@ const LeftSide = () => {
                         <span>Quản lý bài viết</span>
                     </div>
                 </div>
+
+                <div className="admin--control">
+                    <div className={`admin--link`}
+                         onClick={() => dispatch(logout())}>
+                        <span>Đăng xuất</span>
+                    </div>
+                </div>
             </div>
 
             {adminMenu === 1 && <Main/>}
-            {adminMenu === 2 && <User/>}
             {adminMenu === 3 && <Spam/>}
         </>
     );

@@ -108,15 +108,15 @@ const CommentCard = ({children, comment, post, commentId}) => {
                                     onChange={(e) => setContent(e.target.value)}
                                 />
                             ) : (
-                                <div>
+                                <>
                                     {comment.tag && comment.tag._id !== comment.user._id && (
                                         <Link to={`/profile/${comment.tag._id}`}
                                               style={{marginRight: "5px", fontWeight: "500"}}>
                                             @{comment.tag.username}
                                         </Link>
                                     )}
-                                    <span>{content}</span>
-                                </div>
+                                    <span style={{marginLeft: "3px"}}>{content}</span>
+                                </>
                             )}
                         </div>
                     </div>

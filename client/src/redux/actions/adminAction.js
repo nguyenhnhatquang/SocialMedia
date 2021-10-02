@@ -132,7 +132,6 @@ export const deleteSpamPost = ({post, auth, socket}) => async (dispatch) => {
 
         dispatch({type: GLOBALTYPES.ALERT, payload: {success: res.data.msg}});
 
-        // todo notification
         const msg = {
             id: auth.user._id,
             text: "Bài viết của bạn bị xoá do vi phạm quy định của chúng tôi",

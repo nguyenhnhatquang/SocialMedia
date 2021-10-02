@@ -109,7 +109,7 @@ const adminCtrl = {
                 req.query
             ).paginating();
 
-            const posts = await features.query
+            const user = await features.query
                 .populate("user likes", "avatar username fullName followers")
                 .populate({
                     path: "comments",
@@ -121,8 +121,8 @@ const adminCtrl = {
 
             res.json({
                 msg: "Thành công",
-                result: posts.length,
-                posts,
+                result: user.length,
+                user,
             });
 
         } catch (err) {
