@@ -50,6 +50,12 @@
     margin-bottom: 10px;
 }
 
+.edit-profile_body-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .edit-profile_body-label {
     margin-left: 0;
     font-size: 16px;

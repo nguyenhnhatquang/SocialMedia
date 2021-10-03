@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {GLOBALTYPES} from "../redux/actions/globalTypes";
-
+import { checkImage } from '../utils/imageUpload'
 import {updateProfileUser} from "../redux/actions/profileAction";
+import Avatar from "./Avatar";
 
 
 const EditProfileModal = () => {
@@ -17,11 +18,24 @@ const EditProfileModal = () => {
     const [userData, setUserData] = useState(initialState);
     const {fullName, website, story} = userData;
     const {auth} = useSelector((state) => state);
+    const [avatar, setAvatar] = useState('')
     const dispatch = useDispatch();
 
     useEffect(() => {
         setUserData(auth.user);
     }, [auth.user]);
+
+    const changeAvatar = (e) => {
+        const file = e.target.files[0]
+
+        const err = checkImage(file)
+        if(err) return dispatch({
+            type: GLOBALTYPES.ALERT, payload: {error: err}
+        })
+
+        setAvatar(file)
+    }
+
 
     const handleInput = (e) => {
         const {name, value} = e.target;
@@ -30,7 +44,7 @@ const EditProfileModal = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(updateProfileUser({userData, auth}));
+        dispatch(updateProfileUser({userData,avatar ,auth}));
     };
 
     return (
@@ -52,6 +66,20 @@ const EditProfileModal = () => {
                 </div>
 
                 <div className="edit-profile_body">
+                    <div className="edit-profile_body-avatar">
+                        <input
+                            type="file"
+                            name="changeAvatar"
+                            id="changeAvatar"
+                            accept="image/*"
+                            onChange={changeAvatar}
+                            style={{display: "none"}}
+                        />
+
+                        <label htmlFor="changeAvatar" style={{cursor: "pointer"}}>
+                            <Avatar src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} size="s-avatar"/>
+                        </label>
+                    </div>
                     <div className="edit-profile_body-fullName">
                         <label className="edit-profile_body-label" htmlFor="fullName">Tên của bạn</label>
                         <input
@@ -73,6 +101,7 @@ const EditProfileModal = () => {
                                 </small>
                         }
                     </div>
+
                     <div className="edit-profile_body-fullName">
                         <label className="edit-profile_body-label" htmlFor="fullName">Website</label>
                         <input
@@ -85,6 +114,7 @@ const EditProfileModal = () => {
                             onChange={handleInput}
                         />
                     </div>
+
                     <div className="edit-profile_body-fullName">
                         <label className="edit-profile_body-label" htmlFor="fullName">Story</label>
                         <textarea

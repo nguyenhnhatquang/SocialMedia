@@ -4,6 +4,12 @@
     border-radius: 50%
 }
 
+.s-avatar {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%
+}
+
 .big-avatar {
     height: 45px;
     width: 45px;

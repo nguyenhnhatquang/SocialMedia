@@ -9,16 +9,6 @@ const Friends = () => {
     return (
         <div className="friends">
             <div className="friends-component">
-                <span className="friends-title">Bạn bè của bạn</span>
-                <div className="friends-users">
-                    {auth.user.friends.length > 0 ?
-                        (auth.user.friends.map((user) =>
-                            <UserCard user={user}/>
-                        ))
-                        : <span className="friends-nothing">Không có</span>}
-                </div>
-            </div>
-            <div className="friends-component">
                 <span className="friends-title">Người bạn đã theo dõi</span>
                 <div className="friends-users">
                     {auth.user.following.length > 0 ?
