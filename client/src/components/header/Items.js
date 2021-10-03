@@ -62,6 +62,7 @@ const Items = () => {
                             <span style={{marginLeft: "10px"}}>Bạn bè</span>
                         </Link>
                     </li>
+
                     <li className="header--item"
                         onClick={() => dispatch({type: GLOBALTYPES.CHANGE_PASSWORD, payload: true})}>
                         <IconHeader type="key"/>

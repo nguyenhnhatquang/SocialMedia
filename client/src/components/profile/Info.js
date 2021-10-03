@@ -4,6 +4,8 @@ import Following from './Following';
 import Followers from './Followers';
 import {GLOBALTYPES} from '../../redux/actions/globalTypes';
 import FollowButton from "../FollowButton";
+import {Link} from "react-router-dom";
+import {MESS_TYPES} from "../../redux/actions/messageAction";
 
 const Info = ({id, auth, profile, dispatch}) => {
     const [userData, setUserData] = useState([]);
@@ -21,7 +23,7 @@ const Info = ({id, auth, profile, dispatch}) => {
     }, [id, auth, dispatch, profile.users]);
 
     useEffect(() => {
-        if (showFollowers || showFollowing ) {
+        if (showFollowers || showFollowing) {
             dispatch({type: GLOBALTYPES.MODAL, payload: true});
         } else {
             dispatch({type: GLOBALTYPES.MODAL, payload: false});
@@ -39,12 +41,28 @@ const Info = ({id, auth, profile, dispatch}) => {
                         <div className="info-content_buttons">
                             {user._id === auth.user._id ? (
                                 <button className="info-content_button"
-                                    onClick={() => dispatch({type: GLOBALTYPES.EDIT_PROFILE, payload: true})}
+                                        onClick={() => dispatch({type: GLOBALTYPES.EDIT_PROFILE, payload: true})}
                                 >
                                     Chỉnh sửa trang cá nhân
                                 </button>
                             ) : (
-                                <FollowButton user={user}/>
+                                <>
+                                    <FollowButton user={user}/>
+
+                                    <Link to={`/message/${id}`} className="info-content_button"
+                                          onClick={() => {
+                                              const {role, gender, saved, story, website, followers, following, friends, updatedAt, createdAt, email, __v, ...newUser} = user;
+
+                                              dispatch({
+                                                  type: MESS_TYPES.ADD_USER,
+                                                  payload: {...newUser, text: '', media: []}
+                                              })
+                                          }
+                                          }
+                                    >
+                                        Nhắn tin
+                                    </Link>
+                                </>
                             )}
                         </div>
                         <div className="info-content_follows">
