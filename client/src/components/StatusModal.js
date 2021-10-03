@@ -83,7 +83,7 @@ const StatusModal = () => {
         if (images.length > 5)
             return dispatch({
                 type: GLOBALTYPES.ALERT,
-                payload: {error: "Vui lòng không chọn quá 5 ảnh/video"},
+                payload: {error: "Vui lòng không chọn quá 5 ảnh hoặc 1 video"},
             });
 
         if (images.length === 0)
@@ -91,6 +91,21 @@ const StatusModal = () => {
                 type: GLOBALTYPES.ALERT,
                 payload: {error: "Vui lòng chọn ít nhất 1 ảnh/video"},
             });
+
+        if (images.length > 1) {
+            let check = false;
+            images.forEach((image)=> {
+                if (image.type.match(/video/i)){
+                    check = true;
+                }
+            })
+
+            if (check)
+                return dispatch({
+                    type: GLOBALTYPES.ALERT,
+                    payload: {error: "Vui lòng không chọn quá 5 ảnh hoặc 1 video"},
+                });
+        }
 
         if (status.onEdit) {
             dispatch(updatePost({content, images, auth, status}));

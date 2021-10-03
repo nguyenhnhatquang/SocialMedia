@@ -36,8 +36,22 @@ const validImages = (images) => {
     if (images.length === 0) {
         return "Phải có ít nhất 1 ảnh/video";
     }
+
     if (images.length > 5) {
-        return "Tối đa 5 ảnh/video";
+        return "Tối đa 5 ảnh hoặc 1 video";
+    }
+
+    if (images.length > 1) {
+        let check = false;
+        images.forEach((image)=> {
+            if (image.url.match(/video/i)){
+                check = true;
+            }
+        })
+
+        if (check)
+            return "Tối đa 5 ảnh hoặc 1 video";
     }
 }
+
 module.exports = {validFullName, validUsername, validEmail, validPassword, validImages}
