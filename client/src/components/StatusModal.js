@@ -254,7 +254,7 @@ const StatusModal = () => {
                 </div>
 
                 <button
-                    className="status-modal_submit"
+                    className="btn status-modal_submit"
                     type="submit"
                     variant="contained"
                     disabled={content ? false : true}
