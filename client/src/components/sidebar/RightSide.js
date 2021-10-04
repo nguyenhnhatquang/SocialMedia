@@ -20,7 +20,7 @@ const RightSideBar = () => {
 
             {suggestions.users.length !== 0 &&
             <div className="right-side_suggestion">
-                <span className="right-side_suggestion_title">Đề xuất</span>
+                <span className="right-side_suggestion_title">Gợi ý cho bạn</span>
                 <div>
                     {
                         suggestions.users.map(user => (<UserCard key={user._id} user={user}/>))

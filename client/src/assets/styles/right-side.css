@@ -20,6 +20,8 @@
     top: -10px;
     left: 30px;
     background: rgba(255, 255, 255, 0.1);
+    font-weight: 550;
+    color: #888888;
 }
 
 .right-side_suggestion {
@@ -37,4 +39,6 @@
     top: -10px;
     left: 30px;
     background: rgba(255, 255, 255, 0.1);
+    font-weight: 550;
+    color: #888888;
 }

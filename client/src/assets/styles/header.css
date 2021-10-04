@@ -188,7 +188,9 @@
 .header__icon-notify span {
     position: absolute;
     top: -14px;
-    right: 5px;
+    right: 3px;
+    font-size: 11px;
+    color: white;
 }
 
 /* -----Search----- */

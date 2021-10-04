@@ -85,7 +85,7 @@ const LeftSide = () => {
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Nhấn enter để tìm kiếm"
+                    placeholder="Tìm kiếm trên tin nhắn"
                 />
 
                 <button style={{display: "none"}} type="submit" id="search"/>
