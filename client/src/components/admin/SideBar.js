@@ -32,6 +32,7 @@ const LeftSide = () => {
         <>
             <div className="admin--left">
                 <div className="admin--name">Xin chào: {auth.user.username}</div>
+
                 <div className="admin--control">
                     <div className={`admin--link ${adminMenu === 1 && "admin__active"}`}
                          onClick={handleClickDashboard}>

@@ -49,14 +49,14 @@ const LeftSide = () => {
                         <span>Video</span>
                     </Link>
                 </li>
-                <li>
-                    <Link className="left-side_link">
-                        <img className="left-side__svg"
-                             src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972933/icon/statistics_dnm5ot.svg"
-                             alt="message"/>
-                        <span>Thống kê</span>
-                    </Link>
-                </li>
+                {/*<li>*/}
+                {/*    <Link className="left-side_link">*/}
+                {/*        <img className="left-side__svg"*/}
+                {/*             src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972933/icon/statistics_dnm5ot.svg"*/}
+                {/*             alt="message"/>*/}
+                {/*        <span>Thống kê</span>*/}
+                {/*    </Link>*/}
+                {/*</li>*/}
             </ul>
         </div>
     );
