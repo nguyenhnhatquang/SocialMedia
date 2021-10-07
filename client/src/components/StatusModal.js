@@ -24,8 +24,8 @@ const StatusModal = () => {
         files.forEach((file) => {
             if (!file) return (err = "Thư mục không tồn tại1");
 
-            if (file.size > 1024 * 1024 * 5) {
-                return (err = "Ảnh/Video có kích thước lớn hơn 5Mb");
+            if (file.size > 1024 * 1024 * 20) {
+                return (err = "Ảnh/Video có kích thước lớn hơn 20Mb");
             }
 
             return newImages.push(file);
