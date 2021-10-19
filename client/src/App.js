@@ -78,15 +78,11 @@ function App() {
                             userType === "admin" ?
                                 AdminPage
                                 : Home
-                            : Auth}
+                            : Auth }
                     />
 
-                    {auth.token && userType === "user" && (
-                        <>
-                            <PrivateRouter exact path="/:page" component={PageRender}/>
-                            <PrivateRouter exact path="/:page/:id" component={PageRender}/>
-                        </>
-                    )}
+                    <PrivateRouter exact path="/:page" component={PageRender} />
+                    <PrivateRouter exact path="/:page/:id" component={PageRender} />
                 </div>
             </div>
         </Router>

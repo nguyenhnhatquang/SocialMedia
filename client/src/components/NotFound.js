@@ -1,6 +1,7 @@
 import React from 'react'
 
 const NotFound = () => {
+    console.log("A");
     return (
         <>
             <section className="error-container">
@@ -12,4 +13,4 @@ const NotFound = () => {
     )
 }
 
-export default NotFound
+export default NotFound;

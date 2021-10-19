@@ -18,7 +18,11 @@ const StatusModal = () => {
     };
 
     return (
-        <div className="change-password" onSubmit={handleSubmit}>
+        <div className="change-password" onSubmit={handleSubmit} onClick={(e) => {
+            if(e.target.className === "change-password") {
+                dispatch({type: GLOBALTYPES.CHANGE_PASSWORD, payload: false})
+            }
+        }}>
             <form className="change-password_form">
                 <div className="change-password_header">
                     <span className="change-password_header-title">Đổi mật khẩu</span>
@@ -31,7 +35,8 @@ const StatusModal = () => {
                 </div>
                 <div className="change-password_body">
                     <div className="change-password_body-items">
-                        <label htmlFor="oldPassword" className="change-password_body-items-label">Mật khẩu hiện tại</label>
+                        <label htmlFor="oldPassword" className="change-password_body-items-label">Mật khẩu hiện
+                            tại</label>
                         <input
                             type="text"
                             id="oldPassword"
@@ -54,7 +59,8 @@ const StatusModal = () => {
                         />
                     </div>
                     <div className="change-password_body-items">
-                        <label htmlFor="oldPassword" className="change-password_body-items-label">Xác nhận mật khẩu</label>
+                        <label htmlFor="oldPassword" className="change-password_body-items-label">Xác nhận mật
+                            khẩu</label>
                         <input
                             type="text"
                             id="cnfNewPassword"
@@ -66,7 +72,8 @@ const StatusModal = () => {
                     </div>
                 </div>
 
-                <button className="change-password_submit" type="submit" disabled={oldPassword && newPassword && cnfNewPassword ? false : true}>
+                <button className="change-password_submit" type="submit"
+                        disabled={oldPassword && newPassword && cnfNewPassword ? false : true}>
                     Cập nhật
                 </button>
             </form>

@@ -94,8 +94,8 @@ const StatusModal = () => {
 
         if (images.length > 1) {
             let check = false;
-            images.forEach((image)=> {
-                if (image.type.match(/video/i)){
+            images.forEach((image) => {
+                if (image.type.match(/video/i)) {
                     check = true;
                 }
             })
@@ -127,7 +127,15 @@ const StatusModal = () => {
     }, [status]);
 
     return (
-        <div className="status-modal">
+        <div className="status-modal" onClick={(e) => {
+            if (e.target.className === "status-modal") {
+                handleStopStream();
+                dispatch({
+                    type: GLOBALTYPES.STATUS,
+                    payload: false,
+                });
+            }
+        }}>
             <form className="status-modal_form" onSubmit={handleSubmit}>
                 <div className="status-modal_header">
                     <span className="status-modal_header-title">Tạo bài viết</span>
@@ -136,11 +144,11 @@ const StatusModal = () => {
                         src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626912787/icon/error_l9krog.svg"
                         alt="message"
                         onClick={() => {
+                            handleStopStream();
                             dispatch({
                                 type: GLOBALTYPES.STATUS,
                                 payload: false,
                             });
-                            handleStopStream();
                         }}
                     />
                 </div>

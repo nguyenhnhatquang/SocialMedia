@@ -77,7 +77,7 @@ const adminCtrl = {
             const spamPosts = await Posts.find({
                 $nor: [{reports: {$size: 0}}]
             })
-                .select("user createdAt reports content")
+                .select("user createdAt reports content images")
                 .populate({path: "user", select: "username avatar email"});
 
             res.json({spamPosts});

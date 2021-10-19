@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {GLOBALTYPES} from "../redux/actions/globalTypes";
-import { checkImage } from '../utils/imageUpload'
+import {checkImage} from '../utils/imageUpload'
 import {updateProfileUser} from "../redux/actions/profileAction";
 import Avatar from "./Avatar";
 
@@ -29,13 +29,12 @@ const EditProfileModal = () => {
         const file = e.target.files[0]
 
         const err = checkImage(file)
-        if(err) return dispatch({
+        if (err) return dispatch({
             type: GLOBALTYPES.ALERT, payload: {error: err}
         })
 
         setAvatar(file)
     }
-
 
     const handleInput = (e) => {
         const {name, value} = e.target;
@@ -44,11 +43,18 @@ const EditProfileModal = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(updateProfileUser({userData,avatar ,auth}));
+        dispatch(updateProfileUser({userData, avatar, auth}));
     };
 
     return (
-        <div className="edit-profile">
+        <div className="edit-profile" onClick={(e) => {
+            if (e.target.className === "edit-profile") {
+                dispatch({
+                    type: GLOBALTYPES.EDIT_PROFILE,
+                    payload: false,
+                });
+            }
+        }}>
             <form className="edit-profile_form" onSubmit={handleSubmit}>
                 <div className="edit-profile_header">
                     <span className="edit-profile_header-title">Chỉnh sửa trang cá nhân</span>

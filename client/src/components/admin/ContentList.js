@@ -12,26 +12,33 @@ const ContentList = ({content}) => {
         dispatch(deleteSpamPost({post, auth, socket}));
     };
 
+    console.log({content})
+
     return (
         <>
             {content.length > 0 ? (
                 content.map((post) => (
                     <div className="content-spam">
-                        <span>Báo cáo: {post.reports.length}</span>
+                        <span><strong>Số báo cáo:</strong> {post.reports.length}</span>
 
                         <div className="content-spam__a">
                             <Avatar size="big-avatar" src={post.user.avatar}/>
                             <div className="content-spam__b">
-                                <span>Tên: {post.user.username}</span>
-                                <span>Nội dung: {post.content}</span>
+                                <span><strong>Người đăng:</strong> {post.user.username}</span>
+                                <span><strong>Nội dung:</strong> {post.content}</span>
                             </div>
                             <span className="">
                               ~{moment(post.createdAt).fromNow()}
                             </span>
                         </div>
 
-                        <div className="" onClick={() => handleDeletePost(post)}>
-                            Xóa
+                        <div className="content-spam__A">
+                            <button className="btn content-spam__button" onClick={() => handleDeletePost(post)} style={{marginBottom: "5px"}}>
+                                Xóa
+                            </button>
+                            <button className="btn content-spam__button" onClick={() => handleDeletePost(post)}>
+                                Hủy
+                            </button>
                         </div>
                     </div>
                 ))
