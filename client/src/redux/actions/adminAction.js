@@ -109,7 +109,10 @@ export const getSpamPosts = (token) => async (dispatch) => {
         dispatch({type: ADMIN_TYPES.LOADING_ADMIN, payload: true});
         const res = await getDataAPI("get_spam_posts", token);
 
-        dispatch({type: ADMIN_TYPES.GET_SPAM_POSTS, payload: res.data.spamPosts});
+        // Sắp xếp theo số lượng người report giảm dần
+        const lstSortReports = res.data.spamPosts.sort((a,b) => Number(b.reports.length) - Number(a.reports.length));
+
+        dispatch({type: ADMIN_TYPES.GET_SPAM_POSTS, payload: lstSortReports});
 
         dispatch({type: ADMIN_TYPES.LOADING_ADMIN, payload: false});
     } catch (err) {

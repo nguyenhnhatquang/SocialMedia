@@ -11,6 +11,7 @@ import {
 } from "../../redux/actions/adminAction";
 import Spam from "./Spam";
 import {logout} from "../../redux/actions/authAction";
+import User from "./User";
 
 const LeftSide = () => {
     const {auth, socket} = useSelector(state => state);
@@ -55,13 +56,6 @@ const LeftSide = () => {
                 </div>
 
                 <div className="admin--control">
-                    <div className={`admin--link ${adminMenu === 4 && "admin__active"}`}
-                         onClick={() => setAdminMenu(4)}>
-                        <span>Quản lý bài viết</span>
-                    </div>
-                </div>
-
-                <div className="admin--control">
                     <div className={`admin--link`}
                          onClick={() => dispatch(logout())}>
                         <span>Đăng xuất</span>
@@ -70,6 +64,7 @@ const LeftSide = () => {
             </div>
 
             {adminMenu === 1 && <Main/>}
+            {adminMenu === 2 && <User/>}
             {adminMenu === 3 && <Spam/>}
         </>
     );
