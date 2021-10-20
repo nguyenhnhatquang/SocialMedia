@@ -100,6 +100,19 @@ const adminCtrl = {
         }
     },
 
+    cancelSpamPost: async (req, res) => {
+        try {
+            const post = await Posts.findOneAndUpdate(
+                {_id: req.params.id},
+                {reports: []},
+            );
+
+            res.json({msg: "Hủy bài đăng thành công"});
+        } catch (err) {
+            return res.status(500).json({msg: err.message});
+        }
+    },
+
     getUsers: async (req, res) => {
         try {
             const features = new APIfeatures(

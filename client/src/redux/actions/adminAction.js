@@ -12,6 +12,7 @@ export const ADMIN_TYPES = {
     GET_SPAM_POSTS: "GET_SPAM_POSTS",
     LOADING_ADMIN: "LOADING_ADMIN",
     DELETE_POST: "DELETE_POST",
+    CANCEL_POST: "CANCEL_POST",
 };
 
 
@@ -140,6 +141,27 @@ export const deleteSpamPost = ({post, auth, socket}) => async (dispatch) => {
         };
 
         dispatch(createNotify({msg, auth, socket}));
+    } catch (err) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: {
+                error: err.response.data.msg,
+            },
+        });
+    }
+};
+
+export const cancelSpamPost = ({post, auth}) => async (dispatch) => {
+    dispatch({type: ADMIN_TYPES.CANCEL_POST, payload: post});
+
+    try {
+        const res = await deleteDataAPI(
+            `cancel_spam_posts/${post._id}`,
+            auth.token
+        );
+
+        dispatch({type: GLOBALTYPES.ALERT, payload: {success: res.data.msg}});
+
     } catch (err) {
         dispatch({
             type: GLOBALTYPES.ALERT,

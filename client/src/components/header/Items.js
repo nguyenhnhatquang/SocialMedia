@@ -34,15 +34,34 @@ const Items = () => {
             </div>
 
             <input type="checkbox" className="header--check__notify" checked={checkNotify}/>
-            <div className="header__items_item header--dropdown" onClick={() => setCheckNotify(!checkNotify)}>
+            <div className="header__items_item header--dropdown" onClick={() => {
+                if (check) {
+                    setCheck(!check);
+                }
+                setCheckNotify(!checkNotify)
+            }}>
                 <IconHeader type="notification" notify={notify}/>
                 <div className="header--menuitem__notify">
-                    <NotifyModal />
+                    <NotifyModal/>
                 </div>
             </div>
 
+
             <input type="checkbox" className="header--check" checked={check}/>
-            <div className="header__items_item header--dropdown" onClick={() => setCheck(!check)}>
+
+            <div className="header--menuitem__layer" onClick={() => {
+                if (check || checkNotify) {
+                    setCheck(false);
+                    setCheckNotify(false);
+                }
+            }}/>
+
+            <div className="header__items_item header--dropdown" onClick={() => {
+                if (checkNotify) {
+                    setCheckNotify(!checkNotify);
+                }
+                setCheck(!check)
+            }}>
                 <IconHeader type="sortDown"/>
 
                 <ul className="header--menuitem">
@@ -57,7 +76,7 @@ const Items = () => {
                     </li>
 
                     <li className="header--item people">
-                        <Link to="/friends" className="header__logout" >
+                        <Link to="/friends" className="header__logout">
                             <IconHeader type="people"/>
                             <span style={{marginLeft: "10px"}}>Bạn bè</span>
                         </Link>
@@ -76,6 +95,7 @@ const Items = () => {
                         </Link>
                     </li>
                 </ul>
+
             </div>
         </div>
     );

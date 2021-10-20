@@ -6,10 +6,10 @@ import {getSpamPosts} from '../../redux/actions/adminAction';
 const Spam = () => {
     const {auth, admin} = useSelector((state) => state);
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(getSpamPosts(auth.token));
     }, [dispatch, auth.token])
-
 
     return (
         <div className="admin--right">

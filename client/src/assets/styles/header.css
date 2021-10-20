@@ -104,7 +104,21 @@
     right: 0;
 }
 
-.header--check:checked ~ .header--dropdown > .header--menuitem {
+.header--menuitem__layer {
+    position: fixed;
+    width: 100%;
+    height: 1000vh;
+    left: 0;
+    cursor: default;
+    display: none;
+
+}
+
+.header--check:checked ~ .header--dropdown  > .header--menuitem {
+    display: block;
+}
+
+.header--check:checked ~ .header--menuitem__layer{
     display: block;
 }
 
@@ -245,6 +259,10 @@
 }
 
 .header--check__notify:checked ~ .header--dropdown > .header--menuitem__notify {
+    display: block;
+}
+
+.header--check__notify:checked ~ .header--menuitem__layer {
     display: block;
 }
 
