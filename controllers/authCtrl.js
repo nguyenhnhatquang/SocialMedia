@@ -108,6 +108,10 @@ const authCtrl = {
                 return res.status(400).json({msg: "Email hoặc mật khẩu không chính xác"});
             }
 
+            if (user.status === false) {
+                return res.status(400).json({msg: "Tài khoản của bạn bị khóa vui lòng thử lại sau"});
+            }
+
             const access_token = createAccessToken({id: user._id});
             const refresh_token = createRefreshToken({id: user._id});
 

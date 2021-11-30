@@ -12,7 +12,7 @@ const Search = () => {
 
     const {auth} = useSelector((state) => state);
     const dispatch = useDispatch();
-    const [load, setLoad] = useState(false)
+    const [load, setLoad] = useState(false);
 
     const handleSearch = async (e) => {
         e.preventDefault();

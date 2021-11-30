@@ -16,6 +16,10 @@ const userCtrl = {
         return res.status(400).json({ msg: "Bạn không có quyền xem tài khoản này" });
       }
 
+      if (user.status === false) {
+        return res.status(400).json({ msg: "Tài khoản này bị khóa" });
+      }
+
       res.json({ user });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -28,7 +32,7 @@ const userCtrl = {
         username: { $regex: req.query.username },
       })
         .limit(10)
-        .select("fullName username avatar role");
+        .select("fullName username avatar role status");
 
       users = users.filter(user => user.role !== "admin");
       res.json({ users });

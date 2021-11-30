@@ -1,5 +1,5 @@
 import {GLOBALTYPES} from "./globalTypes";
-import {getDataAPI, deleteDataAPI} from "../../utils/fetchData";
+import {getDataAPI, deleteDataAPI, patchDataAPI} from "../../utils/fetchData";
 import {createNotify} from "./notifyAction";
 
 export const ADMIN_TYPES = {
@@ -13,6 +13,7 @@ export const ADMIN_TYPES = {
     LOADING_ADMIN: "LOADING_ADMIN",
     DELETE_POST: "DELETE_POST",
     CANCEL_POST: "CANCEL_POST",
+    UPDATE_STATUS_USER: "UPDATE_STATUS_USER",
 };
 
 
@@ -110,7 +111,7 @@ export const getSpamPosts = (token) => async (dispatch) => {
         const res = await getDataAPI("get_spam_posts", token);
 
         // Sắp xếp theo số lượng người report giảm dần
-        const lstSortReports = res.data.spamPosts.sort((a,b) => Number(b.reports.length) - Number(a.reports.length));
+        const lstSortReports = res.data.spamPosts.sort((a, b) => Number(b.reports.length) - Number(a.reports.length));
 
         dispatch({type: ADMIN_TYPES.GET_SPAM_POSTS, payload: lstSortReports});
 
@@ -178,6 +179,26 @@ export const cancelSpamPost = ({post, auth}) => async (dispatch) => {
 export const getTotalActiveUsers = ({auth, socket}) => async (dispatch) => {
     try {
         socket.emit('getActiveUsers', auth.user._id);
+    } catch (err) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: {
+                error: err.response.data.msg,
+            },
+        });
+    }
+};
+
+export const updateStatusUser = ({status,id, auth}) => async (dispatch) => {
+    try {
+        const res = await patchDataAPI("admin_user", {
+            status, id
+        }, auth.token);
+
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: {success: res.data.msg},
+        });
     } catch (err) {
         dispatch({
             type: GLOBALTYPES.ALERT,

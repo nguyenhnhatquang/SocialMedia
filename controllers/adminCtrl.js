@@ -1,6 +1,7 @@
 const Posts = require("../models/postModel");
 const Users = require("../models/userModel");
 const Comments = require("../models/commentModel");
+const {validFullName} = require("../utils/Validate");
 
 class APIfeatures {
     constructor(query, queryString) {
@@ -140,6 +141,21 @@ const adminCtrl = {
 
         } catch (err) {
             return res.status(500).json({msg: err.message});
+        }
+    },
+
+    updateStatusUser: async (req, res) => {
+        try {
+            const { status, id } = req.body;
+
+            const user = await Users.findOneAndUpdate(
+                { _id: id },
+                { status:status }
+            );
+
+            res.json({ msg: "Cập nhật thông tin thành công" });
+        } catch (err) {
+            return res.status(500).json({ msg: err.message });
         }
     },
 };

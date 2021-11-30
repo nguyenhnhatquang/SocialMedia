@@ -112,6 +112,7 @@
     border-radius: 10px;
     margin-bottom: 5px;
     cursor: pointer;
+    position: relative;
 }
 
 .content-spam__main {
@@ -154,6 +155,16 @@
     background: #b2b2b2;
 }
 
+.spam_layer {
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    width: calc(100% - 80px);
+    height: 80px;
+    z-index: 10;
+}
+
 .content-spam__more {
     margin-left: 5px;
     padding: 5px 15px;
@@ -161,4 +172,36 @@
     background: #b2b2b2;
     border-radius: 50%;
     font-size: 25px;
+}
+
+.admin--user_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 25px;
+}
+
+.admin--add_btn {
+    background: #8de78d;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.admin--user_header-search {
+    padding: 8px 35px 8px 15px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.admin--search_form {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.admin--search_form img {
+    position: absolute;
+    right: 7px;
 }

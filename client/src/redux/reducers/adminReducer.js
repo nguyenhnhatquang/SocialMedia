@@ -72,6 +72,10 @@ const authReducer = (state = initialState, action) => {
                 spam_posts: DeleteData(state.spam_posts, action.payload._id),
             };
 
+        case ADMIN_TYPES.UPDATE_STATUS_USER:
+            return {
+                ...state
+            }
         default:
             return state;
     }

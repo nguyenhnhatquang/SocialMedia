@@ -8,8 +8,12 @@
     z-index: 5;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     cursor: pointer;
+}
+
+.block {
+    background: #faa0a0;
 }
 
 .user-card_avatar {
@@ -38,6 +42,28 @@
     margin-left: 0;
 }
 
-.user-card:hover {
-    background: #f1f0f0;
+/*.user-card:hover {*/
+/*    background: #f1f0f0;*/
+/*}*/
+
+.user-card_status {
+    width: 50px;
+}
+
+.user-card_button {
+    background: #faa0a0;
+    width: 70px;
+    height: 30px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.user-card_button i {
+    font-weight: 1500;
+}
+
+.active {
+    background: #5ff15f;
 }

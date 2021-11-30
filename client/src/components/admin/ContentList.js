@@ -21,7 +21,7 @@ const ContentList = ({content}) => {
         <>
             {content.length > 0 ? (
                 content.map((post) => (
-                    <div className="content-spam">
+                    <div className="content-spam" key={post._id}>
                         <div className="content-spam__main">
                             <span><strong>Số báo cáo:</strong> {post.reports.length}</span>
 
@@ -45,21 +45,17 @@ const ContentList = ({content}) => {
                                     Hủy
                                 </button>
                             </div>
-
-                            <button className="btn content-spam__more" onClick={(e) => {
-                                console.log(e);
-                                if (e.target.className === "btn content-spam__more") {
-                                    if (e.target.parentElement.nextElementSibling.style.display === "block") {
-                                        e.target.parentElement.nextElementSibling.style.display = "none"
-                                    } else {
-                                        e.target.parentElement.nextElementSibling.style.display = "block"
-                                    }
-                                }
-                            }}>
-                                &darr;
-                            </button>
                         </div>
 
+                        <div className="spam_layer" onClick={(e) => {
+                            if (e.target.className === "spam_layer") {
+                                if (e.target.nextElementSibling.style.display === "block") {
+                                    e.target.nextElementSibling.style.display = "none"
+                                } else {
+                                    e.target.nextElementSibling.style.display = "block"
+                                }
+                            }
+                        }}/>
                         <div className={`collapse_${post._id}`} style={{display: "none"}}>
                             <Carousel images={post.images} id={post._id}/>
                         </div>
