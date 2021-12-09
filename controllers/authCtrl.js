@@ -1,16 +1,18 @@
 const Users = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const {validFullName, validUsername, validEmail, validPassword} = require("../utils/Validate");
+const {validFullName, validUsername, validEmail, validPassword, removeAccents} = require("../utils/Validate");
 
 const authCtrl = {
     register: async (req, res) => {
         try {
             const {fullName, username, email, password, gender} = req.body;
 
+            let valid = validFullName(fullName) || validUsername(username) || validPassword(password) || validEmail(email);
+
             let newUserName = username.toLowerCase().replace(/ /g, "");
 
-            let valid = validFullName(fullName) || validUsername(username) || validPassword(password) || validEmail(email);
+            newUserName = removeAccents(newUserName);
 
             if (valid) {
                 return res.status(400).json({msg: valid});
