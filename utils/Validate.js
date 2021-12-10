@@ -5,9 +5,6 @@ const validFullName = (fullName) => {
     if (fullName.length > 25) {
         return "Tên lớn hơn 25 ký tự";
     }
-    if (checkForSpecialChar(fullName)) {
-        return "Tên chứa ký tự đặc biệt";
-    }
 }
 
 const validUsername = (username) => {
