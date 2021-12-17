@@ -26,24 +26,6 @@ const LeftSide = () => {
                     </Link>
                 </li>
 
-                {/*<li>*/}
-                {/*    <Link className="left-side_link">*/}
-                {/*        <img className="left-side__svg"*/}
-                {/*             src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972440/icon/networking_dvzt4z.svg"*/}
-                {/*             alt="message"/>*/}
-                {/*        <span>Nhóm</span>*/}
-                {/*    </Link>*/}
-                {/*</li>*/}
-
-                <li>
-                    <Link to={`/popular`} className="left-side_link">
-                        <img className="left-side__svg"
-                             src="https://res.cloudinary.com/nguyenhnhatquang/image/upload/v1626972686/icon/compass_xjczoa.svg"
-                             alt="message"/>
-                        <span>Nổi bật</span>
-                    </Link>
-                </li>
-
                 <li>
                     <Link to={`/discover`} className="left-side_link">
                         <img className="left-side__svg"

@@ -38,7 +38,7 @@ const StatusModal = () => {
                         <label htmlFor="oldPassword" className="change-password_body-items-label">Mật khẩu hiện
                             tại</label>
                         <input
-                            type="text"
+                            type="password"
                             id="oldPassword"
                             name="oldPassword"
                             value={oldPassword}
@@ -50,7 +50,7 @@ const StatusModal = () => {
                     <div className="change-password_body-items">
                         <label htmlFor="oldPassword" className="change-password_body-items-label">Mật khẩu mới</label>
                         <input
-                            type="text"
+                            type="password"
                             id="newPassword"
                             name="newPassword"
                             value={newPassword}
@@ -62,7 +62,7 @@ const StatusModal = () => {
                         <label htmlFor="oldPassword" className="change-password_body-items-label">Xác nhận mật
                             khẩu</label>
                         <input
-                            type="text"
+                            type="password"
                             id="cnfNewPassword"
                             name="cnfNewPassword"
                             value={cnfNewPassword}

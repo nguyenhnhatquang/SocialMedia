@@ -111,7 +111,7 @@ const authCtrl = {
             }
 
             if (user.status === false) {
-                return res.status(400).json({msg: "Tài khoản của bạn bị khóa vui lòng thử lại sau"});
+                return res.status(400).json({msg: "Tài khoản của bạn bị khóa vui lòng liên hệ email: nguyenhnhatquang@gmail.com"});
             }
 
             const access_token = createAccessToken({id: user._id});

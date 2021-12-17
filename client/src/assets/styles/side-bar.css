@@ -61,6 +61,11 @@
     align-items: center;
 }
 
+.left-side_topic {
+    margin-top: 5px;
+    cursor: not-allowed;
+}
+
 .left-side_link img {
     height: 30px;
     width: 30px;
