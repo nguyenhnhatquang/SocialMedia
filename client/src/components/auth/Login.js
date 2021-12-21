@@ -57,7 +57,7 @@ const Login = () => {
                         required
                     />
                 </div>
-                <div className="login--text"><a href="#">Quên mật khẩu</a></div>
+                {/*<div className="login--text"><a href="#">Quên mật khẩu</a></div>*/}
                 <button className="btn auth__button">
                     Đăng nhập
                 </button>

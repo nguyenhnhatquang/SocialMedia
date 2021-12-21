@@ -125,9 +125,9 @@ export const refreshToken = () => async (dispatch) => {
 export const register = (data) => async (dispatch) => {
     try {
         dispatch({type: GLOBALTYPES.ALERT, payload: {loading: true}});
+
         const res = await postDataAPI("register", data);
 
-        localStorage.setItem("firstLogin", true);
         dispatch({type: GLOBALTYPES.ALERT, payload: {success: res.data.msg}});
     } catch (err) {
         dispatch({
@@ -141,6 +141,21 @@ export const logout = () => async (dispatch) => {
     try {
         dispatch({type: GLOBALTYPES.ALERT, payload: {loading: true}});
         localStorage.removeItem("firstLogin");
+
+        await postDataAPI("logout");
+        window.location.href = "/";
+        dispatch({type: GLOBALTYPES.ALERT, payload: {loading: false}});
+    } catch (err) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: {error: err.response.data.msg},
+        });
+    }
+};
+
+export const forgotPassword = () => async (dispatch) => {
+    try {
+        dispatch({type: GLOBALTYPES.ALERT, payload: {loading: true}});
 
         await postDataAPI("logout");
         window.location.href = "/";

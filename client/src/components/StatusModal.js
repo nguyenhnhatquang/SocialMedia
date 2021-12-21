@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+    import React, {useState, useRef, useEffect} from 'react'
 
 import {useSelector, useDispatch} from 'react-redux'
 import {GLOBALTYPES} from '../redux/actions/globalTypes'
@@ -22,7 +22,7 @@ const StatusModal = () => {
         let newImages = [];
 
         files.forEach((file) => {
-            if (!file) return (err = "Thư mục không tồn tại1");
+            if (!file) return (err = "Thư mục không tồn tại");
 
             if (file.size > 1024 * 1024 * 20) {
                 return (err = "Ảnh/Video có kích thước lớn hơn 20Mb");
