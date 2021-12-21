@@ -2,6 +2,7 @@ const Users = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const {validFullName, validUsername, validEmail, validPassword, removeAccents} = require("../utils/Validate");
+const sendEmail = require("../utils/SendEmail");
 
 const authCtrl = {
     register: async (req, res) => {
@@ -40,24 +41,18 @@ const authCtrl = {
                 gender,
             });
 
-            const access_token = createAccessToken({id: newUser._id});
-            const refresh_token = createRefreshToken({id: newUser._id});
-
-            res.cookie("refreshtoken", refresh_token, {
-                httpOnly: true,
-                path: "/api/refresh_token",
-                maxAge: 30 * 24 * 60 * 60 * 1000, // Thời gian tồn tại 30 ngày
-            });
-
             await newUser.save();
 
+            const htmlText = "<p>Cảm ơn bạn đã đăng ký vui lòng click vào <a href='https://socialmedia-quang.herokuapp.com/api/confirm?email=" + email + "'>đây</a> để xác minh</p>";
+            await sendEmail({
+                subject: "Thank!",
+                to: email,
+                from: "autonhatquang2609@gmail.com",
+                html: htmlText
+            });
+
             res.json({
-                msg: "Đăng ký thành công",
-                access_token,
-                user: {
-                    ...newUser._doc,
-                    password: "",
-                },
+                msg: "Đăng ký thành công, vui lòng vào email để xác nhận!",
             });
         } catch (err) {
             return res.status(500).json({msg: err.message});
@@ -112,6 +107,10 @@ const authCtrl = {
 
             if (user.status === false) {
                 return res.status(400).json({msg: "Tài khoản của bạn bị khóa vui lòng liên hệ email: nguyenhnhatquang@gmail.com"});
+            }
+
+            if (user.confirmMail === false) {
+                return res.status(400).json({msg: "Tài khoản chưa xác nhận email. Vui lòng xác nhận email để đăng nhập."});
             }
 
             const access_token = createAccessToken({id: user._id});
@@ -173,6 +172,22 @@ const authCtrl = {
                     res.json({access_token, user});
                 }
             );
+        } catch (err) {
+            return res.status(500).json({msg: err.message});
+        }
+    },
+
+    confirmEmail: async (req, res) => {
+        try {
+            const email = req.query.email;
+            await Users.findOneAndUpdate(
+                {email: email},
+                {confirmMail: true}
+            )
+
+            res.json({
+                msg: "Xác nhận email thành công",
+            });
         } catch (err) {
             return res.status(500).json({msg: err.message});
         }
