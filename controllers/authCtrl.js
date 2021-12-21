@@ -183,11 +183,11 @@ const authCtrl = {
             await Users.findOneAndUpdate(
                 {email: email},
                 {confirmMail: true}
-            )
+            );
 
-            res.json({
-                msg: "Xác nhận email thành công",
-            });
+            const html = "<h2>Xác nhận thành công</h2>" +
+                "<p>Bấm vào <a href='https://socialmedia-quang.herokuapp.com'>đây</a> để về trang đăng nhập</p>";
+            res.send(200, html);
         } catch (err) {
             return res.status(500).json({msg: err.message});
         }
