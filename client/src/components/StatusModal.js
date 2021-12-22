@@ -95,8 +95,11 @@ const StatusModal = () => {
         if (images.length > 1) {
             let check = false;
             images.forEach((image) => {
-                if (image.type.match(/video/i)) {
-                    check = true;
+                console.log(image);
+                if (image.type) {
+                    if (image.type.match(/video/i)){
+                        check = true;
+                    }
                 }
             })
 
