@@ -123,6 +123,7 @@ export const follow = ({users, user, auth, socket}) => async (dispatch) => {
             null,
             auth.token
         );
+
         // todo socket
         socket.emit("follow", res.data.newUser);
 
