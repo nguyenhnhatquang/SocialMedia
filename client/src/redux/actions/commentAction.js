@@ -20,24 +20,26 @@ export const createComment = ({post, newComment, auth, socket}) => async (dispat
         const newPost = {...post, comments: [...post.comments, newData]};
         dispatch({type: POST_TYPES.UPDATE_POST, payload: newPost});
 
-        // todo socket
-        socket.emit("createComment", newPost);
+        if (res.data.newComment.user !== post.user._id) {
+            // todo socket
+            socket.emit("createComment", newPost);
 
-        // todo notification
-        const msg = {
-            id: res.data.newComment._id,
-            text: newComment.reply
-                ? " đề cập đến bạn trong một bình luận"
-                : " đã nhận xét bài viết của bạn",
-            recipients: newComment.reply ? [newComment.tag._id] : [post.user._id],
-            url: `/post/${post._id}`,
-            content: newComment.reply
-                ? newComment.content
-                : post.content,
-            image: post.images[0].url,
-        };
+            // todo notification
+            const msg = {
+                id: res.data.newComment._id,
+                text: newComment.reply
+                    ? " đề cập đến bạn trong một bình luận"
+                    : " đã nhận xét bài viết của bạn",
+                recipients: newComment.reply ? [newComment.tag._id] : [post.user._id],
+                url: `/post/${post._id}`,
+                content: newComment.reply
+                    ? newComment.content
+                    : post.content,
+                image: post.images[0].url,
+            };
 
-        dispatch(createNotify({msg, auth, socket}));
+            dispatch(createNotify({msg, auth, socket}));
+        }
     } catch (err) {
         dispatch({type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg}});
     }
