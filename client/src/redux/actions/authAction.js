@@ -37,18 +37,21 @@ export const changePassword = ({oldPassword, newPassword, cnfNewPassword, auth})
             payload: {error: "Nhập mật khẩu cũ"},
         });
     }
+
     if (!newPassword || newPassword.length === 0) {
         dispatch({
             type: GLOBALTYPES.ALERT,
             payload: {error: "Nhập mật khẩu mới"},
         });
     }
+
     if (!cnfNewPassword || cnfNewPassword.length === 0) {
         dispatch({
             type: GLOBALTYPES.ALERT,
             payload: {error: "Nhập lại mật khẩu mới"},
         });
     }
+
     if (newPassword !== cnfNewPassword) {
         dispatch({
             type: GLOBALTYPES.ALERT,
@@ -59,7 +62,7 @@ export const changePassword = ({oldPassword, newPassword, cnfNewPassword, auth})
     try {
         dispatch({type: GLOBALTYPES.ALERT, payload: {loading: true}});
 
-        const res = await postDataAPI('changePassword', {oldPassword, newPassword}, auth.token);
+        const res = await postDataAPI('changePassword', {oldPassword, newPassword, cnfNewPassword}, auth.token);
 
         dispatch({type: GLOBALTYPES.ALERT, payload: {loading: false}});
         dispatch({type: GLOBALTYPES.ALERT, payload: {success: res.data.msg}});

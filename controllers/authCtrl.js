@@ -61,8 +61,11 @@ const authCtrl = {
 
     changePassword: async (req, res) => {
         try {
-            const {oldPassword, newPassword} = req.body;
+            const {oldPassword, newPassword, cnfNewPassword} = req.body;
 
+            if (newPassword !== cnfNewPassword) {
+                return res.status(400).json({msg: "Nhập lại mật khẩu không trùng khớp"});
+            }
             const user = await Users.findOne({_id: req.user._id});
 
             const isMatch = await bcrypt.compare(oldPassword, user.password);
